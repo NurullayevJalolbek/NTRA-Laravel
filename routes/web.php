@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get("/", function () {
+    $ads = \Illuminate\Support\Facades\DB::connection()->table('ads')->get();
+    return view("home", ['ads'=>$ads]);
 });
 
 Route::middleware([
@@ -15,3 +19,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
