@@ -38,6 +38,7 @@ class AdController extends Controller
      */
     public function show(string $id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
+        //
         $ad = Ad::query()->find($id);
         return view('components.single_ad', ["ad" => $ad]);
     }
