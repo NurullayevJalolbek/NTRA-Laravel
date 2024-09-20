@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ad;
 use Illuminate\Http\Request;
 
 class AdController extends Controller
@@ -35,9 +36,10 @@ class AdController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
-        //
+        $ad = Ad::query()->find($id);
+        return view('components.single_ad', ["ad" => $ad]);
     }
 
     /**
