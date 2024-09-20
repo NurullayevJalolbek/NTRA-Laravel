@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get("/", function () {
-    $ads = \Illuminate\Support\Facades\DB::connection()->table('ads')->get();
-    return view("home", ['ads'=>$ads]);
-});
+Route::get('/',\App\Actions\GetAds::class);
+Route::resource('ads', AdController::class);
+
 
 Route::middleware([
     'auth:sanctum',

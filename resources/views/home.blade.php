@@ -1,505 +1,312 @@
-<!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth" dir="ltr">
-<head>
-    <meta charset="UTF-8" />
-    <title>Hously - Tailwind CSS Real Estate Landing & Admin Dashboard Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta content="Real Estate Website Landing Page" name="description" />
-    <meta content="Real Estate, buy, sell, Rent, tailwind Css" name="keywords" />
-    <meta name="author" content="Shreethemes" />
-    <meta name="website" content="https://shreethemes.in" />
-    <meta name="email" content="support@shreethemes.in" />
-    <meta name="version" content="2.2.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+<x-layouts.main>
 
-    <!-- Css -->
-    <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-    <link href="/assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
-    <link href="/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet">
-    <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
-    <!-- Main Css -->
-    <link href="/assets/libs/@iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
-    <link href="/assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/assets/css/tailwind.css" />
+    <section class="relative lg:py-24 py-16">
+        <div class="container relative">
+            <div class="grid grid-cols-1 justify-center">
+                <div class="relative mb-6">
+                    <div class="grid grid-cols-1">
+                        <form action="/search" method="get">
+                            <div id="StarterContent"
+                                 class="p-6 bg-white dark:bg-slate-900 rounded-ss-none rounded-se-none md:rounded-se-xl rounded-xl shadow-md dark:shadow-gray-700">
+                                <div class="" id="buy-home" role="tabpanel" aria-labelledby="buy-home-tab">
+                                    <div class="registration-form text-dark text-start">
+                                        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
+                                            <div>
+                                                <label class="form-label font-medium text-slate-900 dark:text-white">
+                                                    Qidiruv: <span class="text-red-600">*</span>
+                                                </label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-search icons"></i>
+                                                    <input name="search_phrase" type="text" id="search_phrase"
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                                           placeholder="Qidiruv iborasi">
+                                                </div>
+                                            </div>
 
-</head>
+                                            <div>
+                                                <label for="buy-properties"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Filiallar:</label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-estate icons"></i>
+                                                    <select class="form-select z-2" data-trigger name="branch"
+                                                            id="choices-catagory-buy"
+                                                            aria-label="Default select example">
+                                                        <option value="">Filiallar</option>
+                                                        {{--                                                        <?php   foreach ($branches as $branch){--}}
+                                                        {{--                                                            echo "<option value='$branch->id'>$branch->name</option>";--}}
+                                                        {{--                                                        }--}}
+                                                        {{--                                                        ?>--}}
+                                                    </select>
+                                                </div>
+                                            </div>
 
-<body class="dark:bg-slate-900">
+                                            <div>
+                                                <label for="buy-min-price"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">
+                                                    Min Price :
+                                                </label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-usd-circle icons"></i>
+                                                    <input type="number" name="min_price" id="buy-min-price"
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                                           placeholder="Min Price">
+                                                </div>
+                                            </div>
 
-<!-- NAVBAR -->
-<nav id="topnav" class="defaultscroll is-sticky">
-    <div class="container relative">
-        <!-- Start Logo container-->
-        <a class="logo" href="index.html">
-                    <span class="inline-block dark:hidden">
-                        <img src="assets/images/logo-dark.png" class="l-dark" height="24" alt="">
-                        <img src="assets/images/logo-light.png" class="l-light" height="24" alt="">
-                    </span>
-            <img src="assets/images/logo-light.png" height="24" class="hidden dark:inline-block" alt="">
-        </a>
-        <!-- End Logo container-->
+                                            <div>
+                                                <label for="buy-max-price"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">
+                                                    Max Price :
+                                                </label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-usd-circle icons"></i>
+                                                    <input type="number" name="max_price" id="buy-max-price"
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                                           placeholder="Max Price">
+                                                </div>
+                                            </div>
 
-        <!-- Start Mobile Toggle -->
-        <div class="menu-extras">
-            <div class="menu-item">
-                <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
-                    <div class="lines">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <!-- End Mobile Toggle -->
 
-        <!--Login button Start-->
-        <ul class="buy-button list-none mb-0">
-            <li class="inline mb-0">
-                <a href="/logout" class="text-danger d-flex align-items-center text-decoration-none">
-                    <i class="bi bi-box-arrow-right me-2"></i> Log out
-                </a>
-            </li>
-            <a href="/login"
-               class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i
-                    data-feather="user" class="size-4 stroke-[3]"></i>
-            </a>
-            <li class="sm:inline ps-1 mb-0 hidden">
-                <a href="/register" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
-            </li>
+                                            <div class="lg:mt-6">
+                                                <button type="submit" id="search-buy"
+                                                        class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded">
+                                                    Qidirish
+                                                </button>
+                                            </div>
 
-        </ul>
-        <!--Login button End-->
+                                        </div><!--end grid-->
+                                    </div><!--end container-->
+                                </div>
 
-        <div id="navigation">
-            <!-- Navigation Menu-->
-            <ul class="navigation-menu justify-end nav-light">
-                <li class="has-submenu parent-parent-menu-item">
-                    <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                                <div class="hidden" id="sell-home" role="tabpanel" aria-labelledby="sell-home-tab">
+                                    <div class="registration-form text-dark ltr:text-start rtl:text-end">
+                                        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
+                                            <div>
+                                                <label class="form-label font-medium text-slate-900 dark:text-white">Search
+                                                    : <span class="text-red-600">*</span></label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-search icons"></i>
+                                                    <input type="text" id="job-keyword"
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                                           placeholder="Search your keaywords">
+                                                </div>
+                                            </div>
 
-                    <ul class="submenu megamenu">
-                        <li>
-                            <ul>
-                                <li>
-                                    <a href="index.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-one.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero One</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index-two.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-two.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Two</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                            <div>
+                                                <label for="buy-properties"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Filiaallar:</label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-estate icons"></i>
+                                                    <select class="form-select z-2" data-trigger
+                                                            id="choices-catagory-sell"
+                                                            aria-label="Default select example">
+                                                        <option>Houses</option>
+                                                        <option>Apartment</option>
+                                                        <option>Offices</option>
+                                                        <option>Townhome</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                        <li>
-                            <ul>
-                                <li>
-                                    <a href="index-three.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-three.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Three</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index-four.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-four.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Four</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                            <div>
+                                                <label for="buy-min-price"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Min
+                                                    Price :</label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-usd-circle icons"></i>
+                                                    <select class="form-select" data-trigger
+                                                            id="choices-min-price-sell"
+                                                            aria-label="Default select example">
+                                                        <option>Min Price</option>
+                                                        <option>500</option>
+                                                        <option>1000</option>
+                                                        <option>2000</option>
+                                                        <option>3000</option>
+                                                        <option>4000</option>
+                                                        <option>5000</option>
+                                                        <option>6000</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                        <li>
-                            <ul>
-                                <li>
-                                    <a href="index-five.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-five.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Five</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index-six.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-six.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Six</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                            <div>
+                                                <label for="buy-max-price"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Max
+                                                    Price :</label>
+                                                <div class="filter-search-form relative mt-2">
+                                                    <i class="uil uil-usd-circle icons"></i>
+                                                    <select class="form-select" data-trigger
+                                                            id="choices-max-price-sell"
+                                                            aria-label="Default select example">
+                                                        <option>Max Price</option>
+                                                        <option>400</option>
+                                                        <option>1000</option>
+                                                        <option>2000</option>
+                                                        <option>3000</option>
+                                                        <option>4000</option>
+                                                        <option>5000</option>
+                                                        <option>6000</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                        <li>
-                            <ul>
-                                <li>
-                                    <a href="index-seven.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-seven.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Seven</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index-eight.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-eight.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Eight</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                            <div class="lg:mt-6">
+                                                <input type="submit" id="search-sell"
+                                                       class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded"
+                                                >
+                                            </div>
+                                        </div><!--end grid-->
+                                    </div><!--end container-->
+                                </div>
 
-                        <li>
-                            <ul>
-                                <li>
-                                    <a href="index-nine.html" class="sub-menu-item">
-                                        <div class="lg:text-center">
-                                            <span class="none lg:block"><img src="assets/images/demos/hero-nine.png"
-                                                                             class="img-fluid rounded shadow-md" alt=""></span>
-                                            <span class="lg:mt-2 block">Hero Nine <span
-                                                    class="bg-yellow-500 inline-block text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5 ms-1">New</span></span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                                <div class="hidden" id="rent-home" role="tabpanel" aria-labelledby="rent-home-tab">
+                                    <div class="registration-form text-dark ltr:text-start rtl:text-end">
+                                        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
+                                            <div>
+                                                <label class="form-label font-medium text-slate-900 dark:text-white">Search
+                                                    : <span class="text-red-600">*</span></label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-search icons"></i>
+                                                    <input type="text" id="job-keyword"
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                                           placeholder="Search your keaywords">
+                                                </div>
+                                            </div>
 
-                <li><a href="buy.html" class="sub-menu-item">Buy</a></li>
+                                            <div>
+                                                <label for="buy-properties"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Select
+                                                    Categories:</label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-estate icons"></i>
+                                                    <select class="form-select z-2" data-trigger
+                                                            id="choices-catagory-rent"
+                                                            aria-label="Default select example">
+                                                        <option>Houses</option>
+                                                        <option>Apartment</option>
+                                                        <option>Offices</option>
+                                                        <option>Townhome</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                <li><a href="sell.html" class="sub-menu-item">Sell</a></li>
+                                            <div>
+                                                <label for="buy-min-price"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Min
+                                                    Price :</label>
+                                                <div class="filter-search-form relative filter-border mt-2">
+                                                    <i class="uil uil-usd-circle icons"></i>
+                                                    <select class="form-select" data-trigger
+                                                            id="choices-min-price-rent"
+                                                            aria-label="Default select example">
+                                                        <option>Min Price</option>
+                                                        <option>500</option>
+                                                        <option>1000</option>
+                                                        <option>2000</option>
+                                                        <option>3000</option>
+                                                        <option>4000</option>
+                                                        <option>5000</option>
+                                                        <option>6000</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                <li class="has-submenu parent-parent-menu-item">
-                    <a href="javascript:void(0)">Listing</a><span class="menu-arrow"></span>
-                    <ul class="submenu">
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Grid View </a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="grid.html" class="sub-menu-item">Grid Listing</a></li>
-                                <li><a href="grid-sidebar.html" class="sub-menu-item">Grid Sidebar </a></li>
-                                <li><a href="grid-map.html" class="sub-menu-item">Grid With Map</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> List View </a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="list.html" class="sub-menu-item">List Listing</a></li>
-                                <li><a href="list-sidebar.html" class="sub-menu-item">List Sidebar </a></li>
-                                <li><a href="list-map.html" class="sub-menu-item">List With Map</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Property Detail</a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="property-detail.html" class="sub-menu-item">Property Detail</a></li>
-                                <li><a href="property-detail-two.html" class="sub-menu-item">Property Detail Two</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                                            <div>
+                                                <label for="buy-max-price"
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Max
+                                                    Price :</label>
+                                                <div class="filter-search-form relative mt-2">
+                                                    <i class="uil uil-usd-circle icons"></i>
+                                                    <select class="form-select" data-trigger
+                                                            id="choices-max-price-rent"
+                                                            aria-label="Default select example">
+                                                        <option>Max Price</option>
+                                                        <option>500</option>
+                                                        <option>1000</option>
+                                                        <option>2000</option>
+                                                        <option>3000</option>
+                                                        <option>4000</option>
+                                                        <option>5000</option>
+                                                        <option>6000</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                <li class="has-submenu parent-parent-menu-item">
-                    <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
-                    <ul class="submenu">
-                        <li><a href="aboutus.html" class="sub-menu-item">About Us</a></li>
-                        <li><a href="features.html" class="sub-menu-item">Featues</a></li>
-                        <li><a href="pricing.html" class="sub-menu-item">Pricing</a></li>
-                        <li><a href="faqs.html" class="sub-menu-item">Faqs</a></li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Agents</a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="agents.html" class="sub-menu-item">Agents</a></li>
-                                <li><a href="agent-profile.html" class="sub-menu-item">Agent Profile</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Agencies</a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="agencies.html" class="sub-menu-item">Agencies</a></li>
-                                <li><a href="agency-profile.html" class="sub-menu-item">Agency Profile</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="auth-login.html" class="sub-menu-item">Login</a></li>
-                                <li><a href="auth-signup.html" class="sub-menu-item">Signup</a></li>
-                                <li><a href="auth-re-password.html" class="sub-menu-item">Reset Password</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
-                                <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
-                                <li><a href="blog-sidebar.html" class="sub-menu-item"> Blog Sidebar</a></li>
-                                <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Special </a><span
-                                class="submenu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="comingsoon.html" class="sub-menu-item">Comingsoon</a></li>
-                                <li><a href="maintenance.html" class="sub-menu-item">Maintenance</a></li>
-                                <li><a href="404.html" class="sub-menu-item">404! Error</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li><a href="contact.html" class="sub-menu-item">Contact</a></li>
-            </ul><!--end navigation menu-->
-        </div><!--end navigation-->
-    </div><!--end container-->
-</nav><!--end header-->
-<!-- End Navbar -->
-@dd($ads)
-<!-- FOOTER -->
-<footer class="relative bg-slate-900 dark:bg-slate-800 mt-24">
-    <div class="container relative">
-        <div class="grid grid-cols-1">
-            <div class="relative py-16">
-                <!-- Subscribe -->
-                <div class="relative w-full">
-                    <div class="relative -top-40 bg-white dark:bg-slate-900 lg:px-8 px-6 py-10 rounded-xl shadow-lg dark:shadow-gray-700 overflow-hidden">
-                        <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-[30px]">
-                            <div class="md:text-start text-center z-1">
-                                <h3 class="md:text-3xl text-2xl md:leading-normal leading-normal font-medium text-black dark:text-white">
-                                    Subscribe to Newsletter!</h3>
-                                <p class="text-slate-400 max-w-xl mx-auto">Subscribe to get latest updates and
-                                    information.</p>
+                                            <div class="lg:mt-6">
+                                                <input type="submit" id="search-rent"
+                                                       class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded"
+                                                       value="Search">
+                                            </div>
+                                        </div><!--end grid-->
+                                    </div><!--end container-->
+                                </div>
                             </div>
-
-                            <div class="subcribe-form z-1">
-                                <form class="relative max-w-lg md:ms-auto">
-                                    <input type="email" id="subcribe" name="email"
-                                           class="rounded-full bg-white dark:bg-slate-900 shadow dark:shadow-gray-700"
-                                           placeholder="Enter your email :">
-                                    <button type="submit"
-                                            class="btn bg-green-600 hover:bg-green-700 text-white rounded-full">
-                                        Subscribe
-                                    </button>
-                                </form><!--end form-->
-                            </div>
-                        </div>
-
-                        <div class="absolute -top-5 -start-5">
-                            <div class="uil uil-envelope lg:text-[150px] text-7xl text-black/5 dark:text-white/5 ltr:-rotate-45 rtl:rotate-45"></div>
-                        </div>
-
-                        <div class="absolute -bottom-5 -end-5">
-                            <div class="uil uil-pen lg:text-[150px] text-7xl text-black/5 dark:text-white/5 rtl:-rotate-90"></div>
-                        </div>
-                    </div>
-
-                    <!--                    <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px] -mt-24">-->
-                    <!--                        <div class="lg:col-span-4 md:col-span-12">-->
-                    <!--                            <a href="#" class="text-[22px] focus:outline-none">-->
-                    <!--                                <img src="assets/images/logo-light.png" alt="">-->
-                    <!--                            </a>-->
-                    <!--                            <p class="mt-6 text-gray-300">A great plateform to buy, sell and rent your properties-->
-                    <!--                                without any agent or commisions.</p>-->
-                    <!---->
-                    <!--                        </div><!--end col-->-->
-                    <!---->
-                    <!--                        <div class="lg:col-span-2 md:col-span-4">-->
-                    <!--                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Company</h5>-->
-                    <!--                            <ul class="list-none footer-list mt-6">-->
-                    <!--                                <li><a href="aboutus.html"-->
-                    <!--                                       class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> About us</a></li>-->
-                    <!--                                <li class="mt-[10px]"><a href="features.html"-->
-                    <!--                                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Services</a></li>-->
-                    <!--                                <li class="mt-[10px]"><a href="pricing.html"-->
-                    <!--                                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Pricing</a></li>-->
-                    <!--                                <li class="mt-[10px]"><a href="blog.html"-->
-                    <!--                                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Blog</a></li>-->
-                    <!--                                <li class="mt-[10px]"><a href="auth-login.html"-->
-                    <!--                                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Login</a></li>-->
-                    <!--                            </ul>-->
-                    <!--                        </div><!--end col-->-->
-                    <!---->
-                    <!--                        <div class="lg:col-span-3 md:col-span-4">-->
-                    <!--                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Usefull Links</h5>-->
-                    <!--                            <ul class="list-none footer-list mt-6">-->
-                    <!--                                <li><a href="terms.html"-->
-                    <!--                                       class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Terms of Services</a></li>-->
-                    <!--                                <li class="mt-[10px]"><a href="privacy.html"-->
-                    <!--                                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>-->
-                    <!--                                <li class="mt-[10px]"><a href="listing-one.html"-->
-                    <!--                                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Listing</a></li>-->
-                    <!--                                <li class="mt-[10px]"><a href="contact.html"-->
-                    <!--                                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i-->
-                    <!--                                                class="uil uil-angle-right-b me-1"></i> Contact</a></li>-->
-                    <!--                            </ul>-->
-                    <!--                        </div><!--end col-->-->
-                    <!---->
-                    <!--                        <div class="lg:col-span-3 md:col-span-4">-->
-                    <!--                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Contact Details</h5>-->
-                    <!---->
-                    <!---->
-                    <!--                            <div class="flex mt-6">-->
-                    <!--                                <i data-feather="map-pin" class="size-5 text-green-600 me-3"></i>-->
-                    <!--                                <div class="">-->
-                    <!--                                    <h6 class="text-gray-300 mb-2">C/54 Northwest Freeway, <br> Suite 558, <br> Houston,-->
-                    <!--                                        USA 485</h6>-->
-                    <!--                                    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"-->
-                    <!--                                       data-type="iframe"-->
-                    <!--                                       class="text-green-600 hover:text-green-700 duration-500 ease-in-out lightbox">View-->
-                    <!--                                        on Google map</a>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!---->
-                    <!--                            <div class="flex mt-6">-->
-                    <!--                                <i data-feather="mail" class="size-5 text-green-600 me-3"></i>-->
-                    <!--                                <div class="">-->
-                    <!--                                    <a href="mailto:contact@example.com"-->
-                    <!--                                       class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">contact@example.com</a>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!---->
-                    <!--                            <div class="flex mt-6">-->
-                    <!--                                <i data-feather="phone" class="size-5 text-green-600 me-3"></i>-->
-                    <!--                                <div class="">-->
-                    <!--                                    <a href="tel:+152534-468-854"-->
-                    <!--                                       class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">+152-->
-                    <!--                                        534-468-854</a>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div><!--end col-->-->
-                    <!--                    </div><!--end grid-->-->
+                        </form>
+                    </div><!--end grid-->
                 </div>
-                <!-- Subscribe -->
-            </div>
-        </div>
-    </div><!--end container-->
-
-    <div class="py-[30px] px-0 border-t border-gray-800 dark:border-gray-700">
-        <div class="container relative text-center">
-            <div class="grid md:grid-cols-2 items-center gap-6">
-                <div class="md:text-start text-center">
-                    <p class="mb-0 text-gray-300">©
-                        <script>document.write(new Date().getFullYear())</script>
-                        Hously. Design with <i class="mdi mdi-heart text-red-600"></i> by <a
-                            href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.
-                    </p>
-                </div>
-
-                <ul class="list-none md:text-end text-center">
-                    <li class="inline"><a href="https://1.envato.market/hously" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="shopping-cart" class="size-4"></i></a></li>
-                    <li class="inline"><a href="https://dribbble.com/shreethemes" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="dribbble" class="size-4"></i></a></li>
-                    <li class="inline"><a href="https://www.behance.net/shreethemes" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                class="uil uil-behance align-baseline"></i></a></li>
-                    <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="linkedin" class="size-4"></i></a></li>
-                    <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="facebook" class="size-4"></i></a></li>
-                    <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="instagram" class="size-4"></i></a></li>
-                    <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="twitter" class="size-4"></i></a></li>
-                    <li class="inline"><a href="mailto:support@shreethemes.in"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="mail" class="size-4"></i></a></li>
-                    <li class="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank"
-                                          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i
-                                data-feather="file-text" class="size-4"></i></a></li>
-                </ul><!--end icon-->
             </div><!--end grid-->
         </div><!--end container-->
-    </div>
-</footer><!--end footer-->
+        <div class="container relative">
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
 
-<!-- Back to top -->
-<a href="#" onclick="topFunction()" id="back-to-top"
-   class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 end-5 size-9 text-center bg-green-600 text-white justify-center items-center"><i
-        class="uil uil-arrow-up"></i></a>
-<!-- Back to top -->
+                <?php
 
-<!-- JAVASCRIPTS -->
-<script src="../assets/libs/tiny-slider/min/tiny-slider.js"></script>
-<script src="../assets/libs/tobii/js/tobii.min.js"></script>
-<script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
-<script src="../assets/libs/swiper/js/swiper.min.js"></script>
-<script src="../assets/libs/feather-icons/feather.min.js"></script>
-<script src="../assets/js/plugins.init.js"></script>
-<script src="../assets/js/app.js"></script>
+                /**
+                 * @var  $ads
+                 */
+
+                foreach ($ads as $ad): ?>
+
+                <div
+                    class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
+                    <div class="relative">
+                        <img src="assets/images/property/1.jpg" alt="">
+
+                        <div class="absolute top-4 end-4">
+                            <a href="javascript:void(0)"
+                               class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
+                                    class="mdi mdi-heart text-[20px]"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="pb-6">
+                            <a href="/ads/<?php echo $ad['id'] ?>"
+                               class="text-lg hover:text-green-600 font-medium ease-in-out duration-500"> <?php echo $ad['title'] ?></a>
+                        </div>
+
+                        <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                            <li class="flex items-center me-4">
+                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                <span>8000sqf</span>
+                            </li>
+
+                            <li class="flex items-center me-4">
+                                <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                <span>4 Beds</span>
+                            </li>
+
+                            <li class="flex items-center">
+                                <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                <span>4 Baths</span>
+                            </li>
+                        </ul>
+
+                        <ul class="pt-6 flex justify-between items-center list-none">
+                            <li>
+                                <span class="text-slate-400">Price</span>
+                                <p class="text-lg font-medium">$ <?php echo $ad['price'] ?></p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div><!--end property content-->
+
+                <?php endforeach; ?>
+
+            </div><!--end container-->
+        </div><!--end grid-->
+    </section>
 
 
-<script>
-    const handleChange = () => {
-        const fileUploader = document.querySelector('#input-file');
-        const getFile = fileUploader.files
-        if (getFile.length !== 0) {
-            const uploadedFile = getFile[0];
-            readFile(uploadedFile);
-        }
-    }
-
-    const readFile = (uploadedFile) => {
-        if (uploadedFile) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const parent = document.querySelector('.preview-box');
-                parent.innerHTML = `<img class="preview-content" src=${reader.result} />`;
-            };
-
-            reader.readAsDataURL(uploadedFile);
-        }
-    };
-</script>
-<!-- JAVASCRIPTS -->
-</body>
-</html>
-
-
-
-
+</x-layouts.main>
