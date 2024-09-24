@@ -11,7 +11,7 @@ class AdForm extends Component
     public $ad;
     public array|null $ads =null;
     public  array|null  $status = null;
-    public $action = "ads";
+    public  $action = "/ads";
     public   $branches = [];
 
     /**

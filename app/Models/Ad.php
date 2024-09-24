@@ -9,6 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
+    protected  $fillable=[
+        'title',
+        'description',
+        'address',
+        'price',
+        'rooms',
+        'branch_id',
+        'user_id',
+        'status_id',
+    ];
     use HasFactory;
     public  function branch(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

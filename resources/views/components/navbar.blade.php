@@ -158,7 +158,7 @@
                     </ul>
                 </li>
 
-                <li><a href="buy.html" class="sub-menu-item">Buy</a></li>
+                <li><a href="/ads/create" class="sub-menu-item">E'lon qoshish</a></li>
 
                 <li><a href="sell.html" class="sub-menu-item">Sell</a></li>
 
