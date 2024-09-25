@@ -31,10 +31,10 @@
                                                             id="choices-catagory-buy"
                                                             aria-label="Default select example">
                                                         <option value="">Filiallar</option>
-{{--                                                                                                                <?php   foreach ($branches as $branch){--}}
-{{--                                                                                                                    echo "<option value='$branch->id'>$branch->name</option>";--}}
-{{--                                                                                                                }--}}
-{{--                                                                                                                ?>--}}
+                                                        {{--                                                                                                                <?php   foreach ($branches as $branch){--}}
+                                                        {{--                                                                                                                    echo "<option value='$branch->id'>$branch->name</option>";--}}
+                                                        {{--                                                                                                                }--}}
+                                                        {{--                                                                                                                ?>--}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -255,7 +255,8 @@
                     <div
                         class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
-                            <img src="assets/images/property/1.jpg" alt="">
+{{--                            @dump(asset("/storage/".$ad->images->first()?->name))--}}
+                            <img src={{asset("/storage/".$ad->images->first()?->name)}} alt="">
 
                             <div class="absolute top-4 end-4">
                                 <a href="javascript:void(0)"

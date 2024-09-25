@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-//dd("ishladi");
 
 class Ad extends Model
 {
+    use HasFactory;
     protected  $fillable=[
         'title',
         'description',
@@ -19,11 +19,18 @@ class Ad extends Model
         'user_id',
         'status_id',
     ];
-    use HasFactory;
+
+    protected  $with = ['images'];
+
     public  function branch(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
 
-        dd($this->belongsTo(Branch::class));
+        return$this->belongsTo(Branch::class);
 
+    }
+    public  function images(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+
+        return $this->hasMany(AdImages::class);
     }
 }

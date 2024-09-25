@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\AdImages;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
+use Illuminate\Support\Facades\Storage;
 use JetBrains\PhpStorm\NoReturn;
 
 class AdController extends Controller
@@ -31,7 +34,15 @@ class AdController extends Controller
      */
     #[NoReturn] public function store(Request $request): void
     {
-        dd($request->all());
+
+        $request->validate([
+            'title' => 'required | min:5',
+            'description' => 'required',
+            'image'=>'mimes:jpg,jpeg,png,gif,svg|max:2048',
+        ],[
+            'title'=>['required' => 'Titlini kiritish majburiy'],
+            'description' => ['required' => 'Izoh kiritish majburiy'],
+        ]);
         $ad = Ad::query()->create([
             'title' => $request->input("title"),
             'description' => $request->input("description"),
@@ -44,8 +55,14 @@ class AdController extends Controller
 
 
         ]);
-        dd($ad);
 
+        $file = Storage::disk('public')->put('/', $request->image);
+
+        AdImages::query()->create([
+            'ad_id' => $ad->id,
+            'name' => $file
+        ]);
+//        dd($ad);
     }
 
     /**
