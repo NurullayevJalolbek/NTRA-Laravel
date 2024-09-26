@@ -30,7 +30,11 @@ class Ad extends Model
     }
     public  function images(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
+        return $this->hasMany(AdImage::class);
+    }
+    public  function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
 
-        return $this->hasMany(AdImages::class);
+        return$this->belongsTo(User::class);
     }
 }

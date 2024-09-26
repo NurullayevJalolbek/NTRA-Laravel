@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\Ad;
+use App\Models\Bookmarked;
 use App\MoonShine\Resources\AdResource;
+use App\MoonShine\Resources\BookmarkedResource;
+use App\MoonShine\Resources\BranchResource;
+use App\MoonShine\Resources\UsersResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -52,7 +56,16 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ),
             ]),
 
-            MenuItem::make("E'lonlar", new AdResource()),
+            MenuItem::make("E'lonlar", new AdResource())->icon("heroicons.home-modern"),
+            MenuItem::make("Filiallar",new BranchResource())->icon("heroicons.map-pin"),
+            MenuItem::make("Home",url('/'))->icon("heroicons.home-modern")->customLinkAttributes(['target' => '_blank']),
+            MenuItem::make("Foydalanuvchilar",new UsersResource())->icon("heroicons.user"),
+
+            MenuItem::make("Saqlanmalar",new BookmarkedResource())->icon("heroicons.bookmark
+
+"),
+
+
         ];
     }
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
-use App\Models\AdImages;
+use App\Models\AdImage;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
@@ -58,11 +58,11 @@ class AdController extends Controller
 
         $file = Storage::disk('public')->put('/', $request->image);
 
-        AdImages::query()->create([
+        AdImage::query()->create([
             'ad_id' => $ad->id,
             'name' => $file
         ]);
-//        dd($ad);
+
     }
 
     /**

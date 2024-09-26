@@ -14,6 +14,8 @@
 
     <!-- favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+
 
 
     @vite(['resources/css/app.css'])

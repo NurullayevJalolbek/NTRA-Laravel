@@ -1,4 +1,5 @@
 <x-header />
+@dd($ad)
     <section class="relative md:py-24 pt-24 pb-16">
         <div class="container relative">
             <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">

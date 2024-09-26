@@ -71,7 +71,7 @@
                         <div class="form-icon relative mt-2">
                             <i class="mdi mdi-currency-usd absolute top-2 start-4 text-green-600"></i>
                             <input name="price" id="price" type="number" class="form-input ps-11"
-                                   placeholder="Narxi($):" value="{{ $ad?->price }}">
+                            placeholder="Narxi($):" value="{{ $ad?->price }}">
                         </div>
                     </div>
                     <div class="col-span-12">

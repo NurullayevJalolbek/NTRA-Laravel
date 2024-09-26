@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <x-layouts.main>
     <section class="relative lg:py-24 py-16">
         <div class="container relative">
@@ -251,18 +252,67 @@
 
 
                 @foreach ($ads as $ad)
+{{--                    @dump($ad)--}}
 
                     <div
                         class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
-{{--                            @dump(asset("/storage/".$ad->images->first()?->name))--}}
+                            @php
+                                try {
+                                    $bookmarkedModel = new \App\Models\Bookmarked();
+                                    $bookmarked = $bookmarkedModel->findByAdAndUser($ad->id, Auth::user()->id);
+                                } catch (\Exception $e) {
+                                    $bookmarked = null; // yoki boshqa xatolikni boshqarish
+                                    // Xatolikni ko'rsatish
+                                }
+                            @endphp
+
+
+
+
+
                             <img src={{asset("/storage/".$ad->images->first()?->name)}} alt="">
 
-                            <div class="absolute top-4 end-4">
-                                <a href="javascript:void(0)"
-                                   class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                        class="mdi mdi-heart text-[20px]"></i></a>
-                            </div>
+                            @if (!isset($bookmarked))
+                                <div class="absolute top-4 end-4">
+                                    <form action="/save" method="POST" class="inline-block">
+                                        @csrf
+                                        <input type="hidden" name="ad_id" value="{{ $ad->id }}">
+                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+                                        <button type="submit"
+                                                class="btn btn-icon bg-white dark:bg-slate-900
+            shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700
+            focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600">
+                                            <i class="mdi mdi-content-save text-[20px]"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+
+                            @else
+                                <div class="absolute top-4 end-4">
+                                    <form action="/delete" method="POST" class="inline-block">
+                                        @csrf
+                                        <input type="hidden" name="ad_id" value="{{ $ad->id }}">
+                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+                                        <button type="submit"
+                                                class="btn btn-icon bg-white dark:bg-slate-900
+        shadow dark:shadow-gray-700 rounded-full text-red-600
+        focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600">
+                                            <i class="mdi mdi-content-save text-[20px]"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                            @endif
+
+
+
+
+
+
                         </div>
                         <div class="p-6">
                             <div class="pb-6">
@@ -289,6 +339,7 @@
 
                             <ul class="pt-6 flex justify-between items-center list-none">
                                 <li>
+                                    <i class="uil uil-usd-circle icons"></i>
                                     <span class="text-slate-400">Price</span>
                                     <p class="text-lg font-medium">  {{$ad['price'] }}</p>
                                 </li>
