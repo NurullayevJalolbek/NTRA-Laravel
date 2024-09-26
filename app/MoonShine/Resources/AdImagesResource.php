@@ -32,7 +32,7 @@ class AdImagesResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Rasm', 'name')
+                \MoonShine\Fields\Image::make('Rasm', 'name')
             ]),
         ];
     }

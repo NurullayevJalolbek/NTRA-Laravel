@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use App\Models\Ad;
 use App\Models\Bookmarked;
+use App\MoonShine\Resources\AdImagesResource;
 use App\MoonShine\Resources\AdResource;
 use App\MoonShine\Resources\BookmarkedResource;
 use App\MoonShine\Resources\BranchResource;
@@ -61,9 +62,11 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             MenuItem::make("Home",url('/'))->icon("heroicons.home-modern")->customLinkAttributes(['target' => '_blank']),
             MenuItem::make("Foydalanuvchilar",new UsersResource())->icon("heroicons.user"),
 
-            MenuItem::make("Saqlanmalar",new BookmarkedResource())->icon("heroicons.bookmark
+            MenuItem::make("Saqlanmalar",new BookmarkedResource())->icon("heroicons.bookmark"),
 
-"),
+            MenuItem::make("Rasmlar", new AdImagesResource())->icon("heroicons.photo"),
+
+
 
 
         ];
