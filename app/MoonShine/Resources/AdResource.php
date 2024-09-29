@@ -32,6 +32,7 @@ class AdResource extends ModelResource
 
     protected string $title = "E'lonlar";
 
+
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -48,8 +49,11 @@ class AdResource extends ModelResource
                 Textarea::make("xonalar",'rooms')->sortable(),
                 Textarea::make("Narxi",'price'),
 
-                Enum::make("Jinsi", "gender")->attach(Gender::class),
+                Enum::make("kim uchun", "gender")->attach(Gender::class),
+
+
                 BelongsTo::make(label:"Filial",relationName: "branch", resource:new BranchResource()),
+//                BelongsTo::make(label:"Elonlar",relationName: "ads", resource: new UsersResource()),
 
                 HasMany::make(label: "Rasmlari", relationName: "images", resource: new AdImagesResource())->onlyLink(),
 

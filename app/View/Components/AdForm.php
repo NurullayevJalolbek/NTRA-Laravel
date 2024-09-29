@@ -2,11 +2,13 @@
 
 namespace App\View\Components;
 
+use AllowDynamicProperties;
+use App\Enums\Gender;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AdForm extends Component
+#[AllowDynamicProperties] class AdForm extends Component
 {
     public $ad;
     public array|null $ads =null;
@@ -14,12 +16,15 @@ class AdForm extends Component
     public  $action = "/ads";
     public   $branches = [];
 
+    public $genders;
+
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
         $this->branches = \App\Models\Branch::all();
+        $this->genders = Gender::cases();
     }
 
     /**

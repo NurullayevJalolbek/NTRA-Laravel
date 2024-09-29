@@ -35,9 +35,7 @@ class BranchResource extends ModelResource
             ID::make()->sortable(),
             Textarea::make('Nomi',"name")->sortable(),
             Text::make("address", "address")->sortable(),
-
-
-            HasMany::make("ads",relationName: "ads", resource: new AdResource())->onlyLink(),
+            HasMany::make("E'lonlar",relationName: "ads", resource: new AdResource())->onlyLink(),
 
         ];
     }

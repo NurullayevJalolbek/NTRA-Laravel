@@ -58,9 +58,12 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             ]),
 
             MenuItem::make("E'lonlar", new AdResource())->icon("heroicons.home-modern"),
+            MenuItem::make("Home", url('/'))->icon("heroicons.home")->customLinkAttributes(['target' => '_blank']),
+
             MenuItem::make("Filiallar",new BranchResource())->icon("heroicons.map-pin"),
-            MenuItem::make("Home",url('/'))->icon("heroicons.home-modern")->customLinkAttributes(['target' => '_blank']),
-            MenuItem::make("Foydalanuvchilar",new UsersResource())->icon("heroicons.user"),
+
+
+            MenuItem::make("Foydalanuvchilar",new UsersResource())->icon("heroicons.users"),
 
             MenuItem::make("Saqlanmalar",new BookmarkedResource())->icon("heroicons.bookmark"),
 

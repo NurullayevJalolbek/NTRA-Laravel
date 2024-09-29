@@ -27,14 +27,17 @@
         <!--Login button Start-->
         <ul class="buy-button list-none mb-0">
             <li class="inline mb-0">
-                <a href="/logout" class="text-danger d-flex align-items-center text-decoration-none">
+                <a href="/logout" style="color: red;" class="d-flex align-items-center text-decoration-none">
                     <i class="bi bi-box-arrow-right me-2"></i> Log out
                 </a>
             </li>
-            <a href="/login"
-               class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i
-                    data-feather="user" class="size-4 stroke-[3]"></i>
+
+
+            <a href="/login" class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">
+                <i data-feather="user" class="size-4 stroke-[3]"></i>
             </a>
+
+
             <li class="sm:inline ps-1 mb-0 hidden">
                 <a href="/register" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
             </li>
@@ -46,7 +49,7 @@
             <!-- Navigation Menu-->
             <ul class="navigation-menu justify-end nav-light">
                 <li class="has-submenu parent-parent-menu-item">
-                    <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                    <a href="/">Home</a><span class="menu-arrow"></span>
 
                     <ul class="submenu megamenu">
                         <li>
@@ -159,6 +162,7 @@
                 </li>
 
                 <li><a href="/ads/create" class="sub-menu-item">E'lon qoshish</a></li>
+                <li><a href="/admin" class="sub-menu-item">Admin</a></li>
 
                 <li><a href="sell.html" class="sub-menu-item">Sell</a></li>
 

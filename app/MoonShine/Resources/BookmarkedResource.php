@@ -43,8 +43,6 @@ class BookmarkedResource extends ModelResource
                 Textarea::make("xonalar", 'rooms', fn($model) => Ad::find($model->ad_id)->rooms),
                 Textarea::make("Narxi", 'price', fn($model)=> Ad::find($model->ad_id)->price),
                 Textarea::make("Status", 'status', fn($model)=> Ad::find($model->ad_id)->status_id == 1 ? "Active" : "InActive"),
-
-
             ]),
         ];
     }

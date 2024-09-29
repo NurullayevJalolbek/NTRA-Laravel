@@ -43,6 +43,8 @@ class AdController extends Controller
             'title'=>['required' => 'Titlini kiritish majburiy'],
             'description' => ['required' => 'Izoh kiritish majburiy'],
         ]);
+        $gender = $request->input("gender");
+
         $ad = Ad::query()->create([
             'title' => $request->input("title"),
             'description' => $request->input("description"),
@@ -52,6 +54,7 @@ class AdController extends Controller
             'branch_id' => $request->input("branch_id"),
             'price' => $request->input("price"),
             'rooms' => $request->input("rooms"),
+            'gender'=> $gender,
 
 
         ]);

@@ -6,7 +6,7 @@ enum Gender: string
 {
 
     case   Male = 'male';
-    case Female = "FEMALE";
+    case Female = "female";
 
     public  function toString(): string
     {

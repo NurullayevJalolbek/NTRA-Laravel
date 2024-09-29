@@ -5,12 +5,13 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "moonshine/moonshine": "^2.22"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.1",
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.2",
         "laravel/pint": "^1.13",

@@ -1,3 +1,4 @@
+{{--@dd($ad)--}}
 <div class="container relative">
     <div class="grid md:grid-cols-2 grid-cols-1 gap-6 mt-6">
         <div class="rounded-md shadow dark:shadow-gray-700 p-6 bg-white dark:bg-slate-900 h-fit">
@@ -57,15 +58,32 @@
 
                                 {{isset($ad) ? '' : "<option value='0'>Filialni tanlang</option>"}}
                                 @foreach ($branches as $branch)
-                                    @if (isset($ad) && $branch->id === $ad->branch_id)
                                         <option value='{{$branch->id}}' selected>{{$branch->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-12 col-span-12">
+                        <label for="gender" class="font-medium">Kim uchun:</label>
+                        <div class="form-icon relative mt-2">
+                            <select
+                                class="form-select form-input w-full py-2 h-10 bg-white dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 focus:border-gray-200 dark:border-gray-800 dark:focus:border-gray-700 focus:ring-0"
+                                id="gender" name="gender">
+
+                                {{isset($ad) ? '' : "<option value='0'>Kim uchun</option>"}}
+                                @foreach ($genders as $gender)
+                                    @if (isset($ad) && $gender->id === $ad->branch_id)
+                                        <option value='{{$gender}}' selected>{{$gender}}</option>
                                     @else
-                                        <option value='{{$branch->id}}'>{{$branch->name}}</option>
+                                        <option value='{{$gender}}'>{{$gender}}</option>
                                     @endif
                                 @endforeach
                             </select>
                         </div>
                     </div>
+
+
                     <div class="col-span-12">
                         <label for="price" class="font-medium">Narxi:</label>
                         <div class="form-icon relative mt-2">
