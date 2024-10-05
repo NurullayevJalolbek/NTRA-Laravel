@@ -27,7 +27,5 @@ class Bookmarked extends Controller
             ->delete();
 
         return redirect("/");
-
-
     }
 }

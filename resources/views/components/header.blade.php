@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://unpkg.com/feather-icons"></link>
-
+    <img src="your-image-url.jpg" alt="Background Image" class="absolute inset-0 w-full h-full object-cover">
 
 
 
