@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,9 +17,7 @@ return new class extends Migration
             $table->text('user_agent')->nullable(); // user_agent as text
             $table->longText('payload'); // payload as longtext
             $table->integer('last_activity'); // last_activity as int
-
-            // If you want to add foreign key constraint on user_id
-             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->index('user_id'); // Adding index for user_id
             $table->index('last_activity'); // Adding index for last_activity

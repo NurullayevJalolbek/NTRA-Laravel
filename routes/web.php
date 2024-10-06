@@ -16,10 +16,10 @@ Route::post("/delete", [Bookmarked::class, 'delete']);
 
 Route::get('/search',[\App\Http\Controllers\AdController::class ,'find']);
 
-Route::get('/logout', function () {
-    \Illuminate\Support\Facades\Auth::logout();
-    return redirect("/");
-})->name("logout");
+//Route::get('/logout', function () {
+//    \Illuminate\Support\Facades\Auth::logout();
+//    return redirect("/");
+//})->name("logout");
 
 
 

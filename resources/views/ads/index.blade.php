@@ -1,4 +1,5 @@
 <x-layouts.main>
+{{--    @dd($ads)--}}
 
 
     <!-- Hero Start -->
