@@ -1,10 +1,17 @@
+# Dockerfile
+
 FROM php:8.3-fpm
 
-WORKDIR /var/www
-# Tizim kutubxonalarini o'rnatish
+# Node.js va npm ni o'rnatish uchun kerakli kutubxonalarni qo'shing
 RUN apt-get update && apt-get install -y \
-    git \
     curl \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm@latest  # npm ni yangilang
+
+# Tizim kutubxonalarini o'rnatish
+RUN apt-get install -y \
+    git \
     zip \
     unzip \
     libpq-dev \
@@ -21,9 +28,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . /var/www
 
-# Fayl huquqlarini o'rnatish
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www
 
-# Barcha kerakli PHP kengaytmalarini o'rnatish (masalan, mbstring, xml)
-RUN docker-php-ext-install mbstring xml  # Qo'shimcha PHP kengaytmalari
+
