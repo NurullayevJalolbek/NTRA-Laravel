@@ -29,10 +29,8 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: rent_app
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: rent_app
     volumes:
       - rent_app_db:/var/lib/mysql  # Persist MySQL data
     networks:
@@ -50,7 +48,7 @@ services:
 
 # Define the custom network
 networks:
-  laravel-network:  # Create a custom network named 'laravel-network'
+  laravel-network: # Create a custom network named 'laravel-network'
     driver: bridge
 
 # Define the volume for MySQL data persistence

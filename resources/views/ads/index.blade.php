@@ -1,18 +1,19 @@
 <x-layouts.main>
-{{--    @dd($ads)--}}
+    {{--    @dd($ads)--}}
 
 
     <!-- Hero Start -->
     <section class="relative mt-20">
         <div class="container-fluid md:mx-4 mx-2">
-            <div class="relative pt-40 pb-52 table w-full rounded-2xl shadow-md overflow-hidden bg-cover bg-center" id="home" style="background-image: url('/assets/images/orqafon.jpg')">
+            <div class="relative pt-40 pb-52 table w-full rounded-2xl shadow-md overflow-hidden bg-cover bg-center"
+                 id="home" style="background-image: url('/assets/images/orqafon.jpg')">
                 <div class="absolute inset-0 bg-black/60"></div>
 
                 <div class="container relative">
                     <div class="grid grid-cols-1">
                         <div class="md:text-start text-center">
                             <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6">
-                                PHP N.1 GROUP <br><span class="text-green-600">Najot ta'llim</span> </h1>
+                                PHP N.1 GROUP <br><span class="text-green-600">Najot ta'llim</span></h1>
                             <p class="text-white/70 text-xl max-w-xl">Assalomu Alaykum saytimizga xush kelibsiz</p>
                         </div>
                     </div><!--end grid-->
@@ -119,53 +120,59 @@
                         class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
                             @php
-//                            dump(Auth::user()->id);
-                                try {
-                                    $bookmarkedModel = new \App\Models\Bookmarked();
-                                    $bookmarked = $bookmarkedModel->findByAdAndUser($ad->id, Auth::user()->id);
-                                } catch (\Exception $e) {
-                                    $bookmarked = null;
-                                }
+                                //                            dump(Auth::user()->id);
+                                                                try {
+                                                                    $bookmarkedModel = new \App\Models\Bookmarked();
+                                                                    $bookmarked = $bookmarkedModel->findByAdAndUser($ad->id, Auth::user()->id);
+                                                                } catch (\Exception $e) {
+                                                                    $bookmarked = null;
+                                                                }
                             @endphp
 
 
                             <img src="{{(new \App\Actions\DisplayAdImage())($ad)}}" alt="">
 
-                            @if (!isset($bookmarked))
-                                <div class="absolute top-4 end-4">
-                                    <form action="/save" method="POST" class="inline-block">
-                                        @csrf
-                                        <input type="hidden" name="ad_id" value="{{ $ad->id }}">
-                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                        <button style="background: none; border: none; cursor: pointer;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5"/>
-                                            </svg>
-                                        </button>
-
-                                    </form>
-                                </div>
-
-                            @else
-                                <div class="absolute top-4 end-4">
-                                    <form action="/delete" method="POST" class="inline-block">
-                                        @csrf
-                                        <input type="hidden" name="ad_id" value="{{ $ad->id }}">
-                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-
-                                        <button style="background: none; border: none; cursor: pointer;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="red" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/>
-                                            </svg>
-                                        </button>
 
 
-                                    </form>
-                                </div>
+
+                            @if (Auth::check())
+                                @if (!isset($bookmarked))
+                                    <div class="absolute top-4 end-4">
+                                        <form action="/save" method="POST" class="inline-block">
+                                            @csrf
+                                            <input type="hidden" name="ad_id" value="{{ $ad->id }}">
+                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                            <button style="background: none; border: none; cursor: pointer;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                     stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                          d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5"/>
+                                                </svg>
+                                            </button>
+
+                                        </form>
+                                    </div>
+
+                                @else
+                                    <div class="absolute top-4 end-4">
+                                        <form action="/delete" method="POST" class="inline-block">
+                                            @csrf
+                                            <input type="hidden" name="ad_id" value="{{ $ad->id }}">
+                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+                                            <button style="background: none; border: none; cursor: pointer;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24"
+                                                     stroke-width="1.5" stroke="red" class="size-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/>
+                                                </svg>
+                                            </button>
+
+
+                                        </form>
+                                    </div>
+
+                                @endif
 
                             @endif
 

@@ -70,7 +70,7 @@ class AdController extends Controller
             ]);
         }
 
-        return redirect(route('home'))->with('message', "E'lon yaratildi");
+        return redirect(route('home'))->with('message', "E'lon yaratildi", 201);
 
     }
     public function find(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application

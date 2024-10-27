@@ -3,9 +3,15 @@
         @csrf
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+        <div>
+            <x-input-label for="position" :value="__('Position')" />
+            <x-text-input id="position" class="block mt-1 w-full" type="text" name="position" :value="old('position')" required autocomplete="position" />
+            <x-input-error :messages="$errors->get('position')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
