@@ -1,27 +1,24 @@
-# Start from the official PHP image with the required extensions
 FROM php:8.3-fpm
 
-# Install system dependencies and PHP extensions required for Laravel
+WORKDIR /var/www
+# Tizim kutubxonalarini o'rnatish
 RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    zip \
+    unzip \
+    libpq-dev \
+    libonig-dev \
     libpng-dev \
+    libcurl4-openssl-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    libzip-dev \
-    unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd zip pdo pdo_mysql
+    && docker-php-ext-install gd pdo pdo_pgsql
 
-# Set the working directory inside the container
-WORKDIR /var/www
-
-# Copy the Laravel application files into the container
-COPY . /var/www
-
-# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install Laravel dependencies
-RUN composer install
+COPY . /var/www
 
-# Set permissions for storage and bootstrap/cache
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www

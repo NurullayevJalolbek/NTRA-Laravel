@@ -22,16 +22,14 @@ class AdFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'price' => $this->faker->randomFloat(2, 10, 100000),
+            'price' => $this->faker->numberBetween(10000, 100000), // Butun sonlar
             'rooms' => $this->faker->randomDigit(),
             'address' => $this->faker->address(),
             'gender' => $this->faker->randomElement(['male', 'female']),
-            'user_id'=>User::factory(),
-            'branch_id'=>Branch::factory(),
-            'status_id'=>Status::factory(),
-
-//            'image' => storage_path("/images/default.jgp")
-
+            'user_id'=> User::factory(),
+            'branch_id'=> Branch::factory(),
+            'status_id'=> Status::factory(),
         ];
     }
+
 }
