@@ -22,20 +22,32 @@ services:
     networks:
       - laravel-network  # Connect to the custom network
 
-  ntra_db:
-    container_name: ntra_db
-    image: mysql:8  # Use MySQL image
+  postgres:
+    image: postgres
+    container_name: postgres
     restart: always
-    ports:
-      - "3306:3306"
     environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: rent_app
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - rent_app_db:/var/lib/mysql  # Persist MySQL data
+      - postgres_data:/var/lib/postgresql/data
     networks:
-      - laravel-network  # Connect to the custom network
+      - app-network
+    expose:
+      - 5432
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "8081:80"
+    networks:
+      - app-network
   ntra_node:
     container_name: ntra_node
     image: node:20
