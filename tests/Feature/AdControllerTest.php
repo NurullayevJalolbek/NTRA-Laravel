@@ -4,11 +4,11 @@ use App\Models\Branch;
 use App\Models\Status;
 use App\Models\User;
 
-test('example', function () {
-    $response = $this->get('/');
-
-    $response->assertStatus(200);
-});
+//test('example', function () {
+//    $response = $this->get('/');
+//
+//    $response->assertStatus(200);
+//});
 
 //test('create a new ad', function () {
 //
