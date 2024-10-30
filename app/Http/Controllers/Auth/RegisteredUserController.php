@@ -32,13 +32,16 @@ class RegisteredUserController extends Controller
 //        dd($request->all());
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => ['required', 'string', 'min:10', 'max:15'], // Telefon uchun qo'shimcha qoidalar
         ]);
 
+//        dd($request->phone);
         $user = User::create([
             'name' => $request->name,
             'position' => $request->position,
+            'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -47,6 +50,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('home'));
     }
 }

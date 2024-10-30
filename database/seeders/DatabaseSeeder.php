@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class
         ]);
         User::factory()->create([
-            'username' => 'Nurullayev',
+            'name' => 'Nurullayev',
             'email' => 'nurullayev@gmail.com',
             'password' => Hash::make('12345678'),
         ]);
