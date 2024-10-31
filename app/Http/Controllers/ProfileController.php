@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Ad;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,18 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('ads.profile-setting', [
             'user' => $request->user(),
         ]);
     }
+
+   public  function  profile(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+   {
+       $user = Auth::user();
+       $ads = Ad::where('user_id', $user->id)->get();
+       return view('ads.profile', ['user' => $user, 'ads' => $ads]);
+
+   }
 
     /**
      * Update the user's profile information.

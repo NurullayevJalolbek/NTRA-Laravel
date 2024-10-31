@@ -8,18 +8,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AdController::class, 'index'])->name("home");
 Route::resource("ads", AdController::class);
 
+Route::post('/bookmark/save',[Bookmarked::class, 'save']);
 
-
-Route::post('/save',[Bookmarked::class, 'save']);
-
-Route::post("/delete", [Bookmarked::class, 'delete']);
+Route::post("/bookmark/delete", [Bookmarked::class, 'delete']);
 
 Route::get('/search',[\App\Http\Controllers\AdController::class ,'find']);
 
-//Route::get('/logout', function () {
-//    \Illuminate\Support\Facades\Auth::logout();
-//    return redirect("/");
-//})->name("logout");
+Route::get('/user/profile', [\App\Http\Controllers\ProfileController::class, 'profile'])->name("user.profile");
+
+Route::get('/user/profile/setting', [\App\Http\Controllers\ProfileController::class, 'edit'])->name("user.setting");
+
+Route::post('/profile/ad/delete', [\App\Http\Controllers\AdController::class, 'delete']);
+
+Route::view('/lock-screen', 'ads.lock-screen');
+
+
+Route::get('/logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect("/");
+})->name("logout");
 
 
 
@@ -29,9 +36,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/dashboard/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/dashboard/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

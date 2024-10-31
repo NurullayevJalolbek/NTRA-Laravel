@@ -5,29 +5,13 @@
                 <div class="lg:col-span-8 md:col-span-7">
                     <div class="grid grid-cols-1 relative">
                         <div class="tiny-one-item">
-                            <div class="tiny-slide">
-                                <img src="../assets/images/ads/default2.jpg"  class="rounded-md shadow dark:shadow-gray-700" alt="">
-                            </div>
 
                             <div class="tiny-slide">
-                                <img src="assets/images/property/single/2.jpg"
+                                <img src="{{ (new \App\Actions\DisplayAdImage())($ad) }}" alt="">
+
                                      class="rounded-md shadow dark:shadow-gray-700" alt="">
                             </div>
 
-                            <div class="tiny-slide">
-                                <img src="assets/images/property/single/3.jpg"
-                                     class="rounded-md shadow dark:shadow-gray-700" alt="">
-                            </div>
-
-                            <div class="tiny-slide">
-                                <img src="assets/images/property/single/4.jpg"
-                                     class="rounded-md shadow dark:shadow-gray-700" alt="">
-                            </div>
-
-                            <div class="tiny-slide">
-                                <img src="assets/images/property/single/5.jpg"
-                                     class="rounded-md shadow dark:shadow-gray-700" alt="">
-                            </div>
                         </div>
                     </div>
 

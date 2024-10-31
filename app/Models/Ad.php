@@ -14,6 +14,7 @@ class Ad extends Model
         'description',
         'address',
         'price',
+        'gender',
         'rooms',
         'branch_id',
         'user_id',

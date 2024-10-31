@@ -6,6 +6,7 @@ use App\Models\Ad;
 use App\Models\AdImage;
 use App\Models\Branch;
 use App\Models\Status;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Storage;
@@ -36,15 +37,21 @@ class AdController extends Controller
      */
     #[NoReturn] public function store(Request $request): \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\Foundation\Application
     {
+//        dd($request);
 
         $request->validate([
-            'title' => 'required | min:5',
+            'title' => 'required|min:5',
             'description' => 'required',
             'image' => 'mimes:jpg,jpeg,png,gif,svg|max:2048',
+            'gender' => 'required|in:male,female', // gender uchun validatsiya qo'shish
         ], [
-            'title' => ['required' => 'Titlini kiritish majburiy'],
-            'description' => ['required' => 'Izoh kiritish majburiy'],
+            'title.required' => 'Titlini kiritish majburiy',
+            'description.required' => 'Izoh kiritish majburiy',
+            'gender.required' => 'Genderni tanlash majburiy', // gender uchun xato xabari
+            'gender.in' => 'Gender "male" yoki "female" bo\'lishi kerak', // gender qiymatlari uchun xato xabari
         ]);
+
+
         $gender = $request->input("gender");
 
         $ad = Ad::query()->create([
@@ -73,6 +80,7 @@ class AdController extends Controller
         return redirect(route('home'))->with('message', "E'lon yaratildi", 201);
 
     }
+
     public function find(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $searchPhrase = $request->input('search_phrase');
@@ -105,6 +113,13 @@ class AdController extends Controller
     {
         $ad = Ad::query()->find($id);
         return view('ads.show', ['ad' => $ad]);
+    }
+
+    public function delete(Request $request): RedirectResponse
+    {
+        $ad = Ad::query()->find($request->input('ad_id'));
+        $ad->delete();
+        return redirect(route('/user/profile'));
     }
 
     /**

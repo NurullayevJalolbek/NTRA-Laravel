@@ -6,7 +6,7 @@
     <section class="relative mt-20">
         <div class="container-fluid md:mx-4 mx-2">
             <div class="relative pt-40 pb-52 table w-full rounded-2xl shadow-md overflow-hidden bg-cover bg-center"
-                 id="home" style="background-image: url('/assets/images/orqafon.jpg')">
+                 id="home" style="background-image: url('/assets/images/OqUy2.jpg')">
                 <div class="absolute inset-0 bg-black/60"></div>
 
                 <div class="container relative">
@@ -37,66 +37,53 @@
                                 <form action="/search" method="get">
                                     <div class="registration-form text-dark text-start">
                                         <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
-
                                             <div>
-
-                                                <label class="form-label font-medium text-slate-900 dark:text-white">Search
-                                                    : <span class="text-red-600">*</span></label>
+                                                <label class="form-label font-medium text-slate-900 dark:text-white">Search : <span class="text-red-600">*</span></label>
                                                 <div class="filter-search-form relative filter-border mt-2">
                                                     <i class="uil uil-search icons"></i>
                                                     <input name="search_phrase" type="text" id="job-keyword"
-                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
-                                                           placeholder="Search your keaywords">
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0 h-12"
+                                                           placeholder="Search your keywords">
                                                 </div>
                                             </div>
 
                                             <div>
-                                                <label for="buy-properties"
-                                                       class="form-label font-medium text-slate-900 dark:text-white">Select
-                                                    Categories:</label>
+                                                <label for="buy-properties" class="form-label font-medium text-slate-900 dark:text-white">Filial :</label>
                                                 <div class="filter-search-form relative filter-border mt-2">
                                                     <i class="uil uil-estate icons"></i>
-                                                    <select class="form-select z-2" data-trigger name="branch_id"
-                                                            id="choices-catagory-buy"
-                                                            aria-label="Default select example">
+                                                    <select class="form-select z-2 bg-gray-50 dark:bg-slate-800 border-0 h-12" data-trigger name="branch_id" id="choices-catagory-buy" aria-label="Default select example">
                                                         <option value="">Filial</option>
                                                         @foreach ($branches as $branch)
-                                                            :
-                                                            <option value={{$branch->id}}>{{ $branch->name }}</option>
+                                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div>
-                                                <label for="buy-min-price"
-                                                       class="form-label font-medium text-slate-900 dark:text-white">Min
-                                                    Price :</label>
+                                                <label for="buy-min-price" class="form-label font-medium text-slate-900 dark:text-white">Min Price :</label>
                                                 <div class="filter-search-form relative filter-border mt-2">
                                                     <i class="uil uil-usd-circle icons"></i>
-                                                    <input name="min_price" type="text" id="job-keyword"
-                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                                    <input name="min_price" type="text" id="buy-min-price"
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0 h-12"
                                                            placeholder="Min Price">
-
                                                 </div>
                                             </div>
 
                                             <div>
-                                                <label for="buy-max-price"
-                                                       class="form-label font-medium text-slate-900 dark:text-white">Max
-                                                    Price :</label>
-                                                <div class="filter-search-form relative mt-2">
+                                                <label for="buy-max-price" class="form-label font-medium text-slate-900 dark:text-white">Max Price :</label>
+                                                <div class="filter-search-form relative filter-border mt-2">
                                                     <i class="uil uil-usd-circle icons"></i>
-                                                    <input type="text" name="max_price" id="job-keyword"
-                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                                    <input type="text" name="max_price" id="buy-max-price"
+                                                           class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0 h-12"
                                                            placeholder="Max Price">
-
                                                 </div>
                                             </div>
 
                                             <div class="lg:mt-6">
                                                 <input type="submit" id="search-buy" name="search"
-                                                       class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded"
-                                                       value="Search">
+                                                       class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full h-12 rounded" <!-- Removed "!h-12" -->
+                                                value="Search">
                                             </div>
                                         </div><!--end grid-->
                                     </div><!--end container-->
@@ -114,7 +101,6 @@
 
 
                 @foreach ($ads as $ad)
-                    {{--                    @dump($ad)--}}
 
                     <div
                         class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
@@ -130,7 +116,7 @@
                             @endphp
 
 
-                            <img src="{{(new \App\Actions\DisplayAdImage())($ad)}}" alt="">
+                            <img src="{{ (new \App\Actions\DisplayAdImage())($ad) }}" alt="">
 
 
 
@@ -138,7 +124,7 @@
                             @if (Auth::check())
                                 @if (!isset($bookmarked))
                                     <div class="absolute top-4 end-4">
-                                        <form action="/save" method="POST" class="inline-block">
+                                        <form action="/bookmark/save" method="POST" class="inline-block">
                                             @csrf
                                             <input type="hidden" name="ad_id" value="{{ $ad->id }}">
                                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -155,7 +141,7 @@
 
                                 @else
                                     <div class="absolute top-4 end-4">
-                                        <form action="/delete" method="POST" class="inline-block">
+                                        <form action="/bookmark/delete" method="POST" class="inline-block">
                                             @csrf
                                             <input type="hidden" name="ad_id" value="{{ $ad->id }}">
                                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
