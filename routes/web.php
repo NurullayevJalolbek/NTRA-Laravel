@@ -18,6 +18,8 @@ Route::get('/user/profile', [\App\Http\Controllers\ProfileController::class, 'pr
 
 Route::get('/user/profile/setting', [\App\Http\Controllers\ProfileController::class, 'edit'])->name("user.setting");
 
+Route::patch('/profile/update', [\App\Http\Controllers\ProfileController::class, 'update'])->name("profile.updates");
+
 Route::post('/profile/ad/delete', [\App\Http\Controllers\AdController::class, 'delete']);
 
 Route::view('/lock-screen', 'ads.lock-screen');

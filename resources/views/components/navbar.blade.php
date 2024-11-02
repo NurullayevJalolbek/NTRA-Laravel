@@ -1,9 +1,10 @@
 <nav id="topnav" class="defaultscroll is-sticky">
-    <div class="container relative">
-        <!-- Start Logo container-->
+    <div class="container relative" style="margin-top: -10px;">
 
-        <h1>NAJOT <img src="/assets/images/NAJOTTALIM.ico" alt="Najot Ta'lim Logo" height="24"> TALIM</h1>
-        <!-- End Logo container-->
+
+{{--        <h1 style="margin-top: 50px;">--}}
+{{--            NAJOT <img src="/assets/images/NAJOTTALIM.ico" alt="Najot Ta'lim Logo" height="24"> TALIM--}}
+{{--        </h1>--}}
 
         <!-- Start Mobile Toggle -->
         <div class="menu-extras">

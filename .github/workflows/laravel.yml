@@ -48,7 +48,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd NTRA-Laravel || exit 1
+            cd NTRA-Laravel
             git pull
             docker-compose -f docker-compose.yml up -d --build
             docker exec rent_app php artisan optimize
