@@ -56,6 +56,17 @@
         }
     </style>
 
+    <style>
+        a {
+            position: relative; /* Chiziqni joylashtirish uchun */
+        }
+
+        a.active {
+            border-bottom: 2px solid black; /* Chiziqning balandligi va rangi */
+            color: black; /* Faol tugma matnining rangi */
+        }
+    </style>
+
 
 </head>
 

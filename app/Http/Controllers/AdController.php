@@ -6,6 +6,7 @@ use App\Models\Ad;
 use App\Models\AdImage;
 use App\Models\Branch;
 use App\Models\Status;
+use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
@@ -22,6 +23,23 @@ class AdController extends Controller
         $ads = Ad::all();
         $branches = Branch::all();
         return view('ads.index', ['ads' => $ads, 'branches' => $branches]);
+    }
+
+
+    public  function  saved(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    {
+        $user = Auth::user();
+        $saqlanmalar = \App\Models\Bookmarked::query()->where('user_id', Auth::user()->id)->get();
+        return view('ads.profile', ['user' => $user,'saqlanmalar' => $saqlanmalar]);
+
+    }
+
+    public function my(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    {
+        $user = Auth::user();
+        $ads = Ad::query()->where('user_id', Auth::user()->id)->get();
+        return view('ads.profile', ['ads' => $ads, 'user' => $user]);
+
     }
 
     /**
@@ -77,6 +95,7 @@ class AdController extends Controller
             ]);
         }
 
+
         return redirect(route('home'))->with('message', "E'lon yaratildi", 201);
 
     }
@@ -119,7 +138,7 @@ class AdController extends Controller
     {
         $ad = Ad::query()->find($request->input('ad_id'));
         $ad->delete();
-        return redirect(route('/user/profile'));
+        return redirect(route('user.profile'));
     }
 
     /**

@@ -115,8 +115,7 @@
                                                                 }
                             @endphp
 
-
-                            <img src="{{ (new \App\Actions\DisplayAdImage())($ad) }}" alt="">
+                            <img src="{{asset((new \App\Actions\DisplayAdImage())($ad)) }}" alt="">
 
 
 

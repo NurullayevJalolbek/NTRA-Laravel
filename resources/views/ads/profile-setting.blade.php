@@ -11,7 +11,7 @@
                             <input id="pro-banner" name="profile-banner" type="file" class="hidden"
                                    onchange="loadFile(event)">
                             <div class="relative shrink-0">
-                                <img src="/assets/images/ads/photo-1577942948749-a3dbb5c6db0a.jpeg" class="h-80 w-full object-cover" id="profile-banner"
+                                <img src="/assets/images/ads/WhiteHouse-9a73875f70db4451b7c8c88175accc04.jpg" class="h-80 w-full object-cover" id="profile-banner"
                                      alt="">
                                 <div class="absolute inset-0 bg-black/70"></div>
                                 <label class="absolute inset-0 cursor-pointer" for="pro-banner"></label>
@@ -30,14 +30,14 @@
                                            onchange="loadFile(event)"/>
                                     <div>
                                         <div class="relative size-24 mx-auto">
-                                            <img src="assets/images/client/07.jpg"
+                                            <img src="/assets/images/client/images.png"
                                                  class="rounded-full shadow dark:shadow-gray-700 ring-4 ring-slate-50 dark:ring-slate-800"
                                                  id="profile-image" alt="">
                                             <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
                                         </div>
 
                                         <div class="mt-4">
-                                            <h5 class="text-lg font-semibold">{{ $user->first_name, $user->last_name }}</h5>
+                                            <h5 class="text-lg font-semibold">{{ $user->first_name }} {{ $user->last_name }}</h5>
                                             <p class="text-slate-400">{{ $user->email }}</p>
                                         </div>
                                     </div>
@@ -162,16 +162,20 @@
                                     </div><!--end row-->
                                 </div>
 
-                                <div
-                                    class="p-6 relative rounded-md shadow dark:shadow-gray-700 bg-white dark:bg-slate-900">
-                                    <h5 class="text-lg font-semibold mb-4 text-red-600">Delete Account :</h5>
+                                <div class="p-6 relative rounded-md shadow dark:shadow-gray-700 bg-white dark:bg-slate-900">
+                                    <h5 class="text-lg font-semibold mb-4 text-red-600">Hisobni o'chirish :</h5>
 
-                                    <p class="text-slate-400 mb-4">Do you want to delete the account? Please press below
-                                        "Delete" button</p>
+                                    <p class="text-slate-400 mb-4">Siz hisobni o'chirishni xohlaysizmi? "O'chirish" tugmasini bosing.</p>
 
-                                    <a href=""
-                                       class="btn bg-red-600 hover:bg-red-700 border-red-600 hover:border-red-700 text-white rounded-md">Delete</a>
+                                    <form action="{{ route('user.profile.delete') }}" method="POST" onsubmit="return confirm('Hisobingizni o\'chirishni xohlayotganingizga ishonchingiz komilmi? Bu amal qaytarilmaydi.');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn bg-red-600 hover:bg-red-700 border-red-600 hover:border-red-700 text-white rounded-md">O'chirish</button>
+                                    </form>
                                 </div>
+
+
+
                             </div>
                         </div>
                     </div>

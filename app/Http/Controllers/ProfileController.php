@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Ad;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use JetBrains\PhpStorm\NoReturn;
-use Illuminate\Validation\Rules;
 
 
 class ProfileController extends Controller
@@ -20,6 +16,22 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+
+    public function lockScreen(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        if (Hash::check($request->password, Auth::user()->password)) {
+            return redirect()->route('home');
+        }else{
+            return redirect()->back();
+        }
+
+    }
+
     public function edit(): View
     {
         return view('ads.profile-setting', ['user' => Auth::user()]);
@@ -28,10 +40,9 @@ class ProfileController extends Controller
     public function profile(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
         $user = Auth::user();
-        $ads = Ad::where('user_id', $user->id)->get();
-        return view('ads.profile', ['user' => $user, 'ads' => $ads]);
-
+        return view('ads.profile', ['user' => $user]);
     }
+
 
     /**
      * Update the user's profile information.
@@ -106,21 +117,10 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
+        Auth::user()->delete();
         Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        return redirect()->route('home');
     }
 }

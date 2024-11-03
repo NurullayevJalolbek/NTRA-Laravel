@@ -23,6 +23,10 @@ class Ad extends Model
 
     protected  $with = ['images'];
 
+    public static function where(string $string, int|string|null $id)
+    {
+    }
+
     public  function branch(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
 

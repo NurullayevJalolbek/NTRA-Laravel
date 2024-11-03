@@ -25,9 +25,10 @@ class Bookmarked extends Model
 
         return $bookmark;
     }
-    public  function  ads()
+    public  function  ads(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo( Ad::class, 'ad_id', 'id' );
 
     }
+
 }

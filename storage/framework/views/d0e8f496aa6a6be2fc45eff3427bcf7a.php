@@ -124,8 +124,7 @@
                                                                 }
                             ?>
 
-
-                            <img src="<?php echo e((new \App\Actions\DisplayAdImage())($ad)); ?>" alt="">
+                            <img src="<?php echo e(asset((new \App\Actions\DisplayAdImage())($ad))); ?>" alt="">
 
 
 
