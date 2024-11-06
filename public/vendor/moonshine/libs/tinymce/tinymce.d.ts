@@ -2263,7 +2263,7 @@ interface DOMUtils {
     addStyle: (cssText: string) => void;
     loadCSS: (url: string) => void;
     hasClass: (elm: string | Element, cls: string) => boolean;
-    addClass: (elm: RunArguments<Element>, cls: string) => void;
+    addClass: (elm: RunArguments<Element>) => void;
     removeClass: (elm: RunArguments<Element>, cls: string) => void;
     toggleClass: (elm: RunArguments<Element>, cls: string, state?: boolean) => void;
     show: (elm: string | Node | Node[]) => void;
