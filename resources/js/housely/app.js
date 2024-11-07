@@ -24,7 +24,7 @@
  *     11.  Light & Dark Theme   *
  *     12.  LTR & RTL Mode       *
  ================================*/
-import feather from 'feather-icons';
+// import feather from 'feather-icons';
 
 window.addEventListener('load', fn, false)
 

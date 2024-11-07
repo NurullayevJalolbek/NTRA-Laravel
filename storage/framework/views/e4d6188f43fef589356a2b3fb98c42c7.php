@@ -116,7 +116,7 @@
                                     <a href="" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Band qilish</a>
                                 </div>
                                 <div class="p-1 w-1/2">
-                                    <a href="" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Saqlab qoyish</a>
+                                    <a href="/user/saved/ads" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Saqlab qoyish</a>
                                 </div>
                             </div>
                         </div>

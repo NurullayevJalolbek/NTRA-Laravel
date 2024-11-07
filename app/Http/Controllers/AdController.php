@@ -100,28 +100,30 @@ class AdController extends Controller
 
     }
 
-    public function find(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+    public function find(Request $request): \Illuminate\Http\JsonResponse
     {
-        $searchPhrase = $request->input('search_phrase');
-        $branchId = $request->input('branches_id');
-        $minPrice = $request->input('min_price');
-        $maxPrice = $request->input('max_price');
-        $ads = Ad::query();
-        if ($searchPhrase) {
-            $ads->where('title', 'like', '%' . $searchPhrase . '%');
-        }
-        if ($branchId) {
-            $ads->where('branches_id', $branchId);
-        }
-        if ($minPrice) {
-            $ads->where('price', '>=', $minPrice);
-        }
-        if ($maxPrice) {
-            $ads->where('price', '<=', $maxPrice);
-        }
-        $ads = $ads->with('branch')->get();
-        $branches = Branch::all();
-        return view('ads.index', compact('ads', 'branches'));
+
+        return response()->json($request->all());
+//        $searchPhrase = $request->input('search_phrase');
+//        $branchId = $request->input('branches_id');
+//        $minPrice = $request->input('min_price');
+//        $maxPrice = $request->input('max_price');
+//        $ads = Ad::query();
+//        if ($searchPhrase) {
+//            $ads->where('title', 'like', '%' . $searchPhrase . '%');
+//        }
+//        if ($branchId) {
+//            $ads->where('branches_id', $branchId);
+//        }
+//        if ($minPrice) {
+//            $ads->where('price', '>=', $minPrice);
+//        }
+//        if ($maxPrice) {
+//            $ads->where('price', '<=', $maxPrice);
+//        }
+//        $ads = $ads->with('branch')->get();
+//        $branches = Branch::all();
+//        return view('ads.index', compact('ads', 'branches'));
     }
 
 

@@ -7,7 +7,7 @@
    File Description: Common JS file of the template(plugins.init.js)
 */
 
-import { tns } from "tiny-slider"
+// import { tns } from "tiny-slider"
 /*********************************/
 /*         INDEX                 */
 /*================================

@@ -51,7 +51,7 @@
                                                 <label for="buy-properties" class="form-label font-medium text-slate-900 dark:text-white">Filial :</label>
                                                 <div class="filter-search-form relative filter-border mt-2">
                                                     <i class="uil uil-estate icons"></i>
-                                                    <select class="form-select z-2 bg-gray-50 dark:bg-slate-800 border-0 h-12" data-trigger name="branch_id" id="choices-catagory-buy" aria-label="Default select example">
+                                                    <select class="form-select z-2 bg-gray-50 dark:bg-slate-800 border-0 h-12" data-trigger  id="branches"   aria-label="Default select example">
                                                         <option value="">Filial</option>
                                                         @foreach ($branches as $branch)
                                                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
@@ -97,7 +97,9 @@
             </div><!--end grid-->
         </div><!--end container-->
         <div class="container relative mt-12">
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]"
+            id="ads-grid"
+            >
 
 
                 @foreach ($ads as $ad)
@@ -115,7 +117,7 @@
                                                                 }
                             @endphp
 
-                            <img src="{{asset((new \App\Actions\DisplayAdImage())($ad)) }}" alt="">
+                            <img src="{{ asset((new \App\Actions\DisplayAdImage())($ad)) }}" alt="rasm">
 
 
 
@@ -213,8 +215,38 @@
                     </div><!--end property content-->
 
                 @endforeach
-
             </div><!--end container-->
+            <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+                <div class="md:col-span-12 text-center">
+                    <nav>
+                        <ul class="inline-flex items-center -space-x-px">
+                            <li>
+                                <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
+                                    <i class="uil uil-angle-left text-[20px]"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" aria-current="page" class="z-10 size-10 inline-flex justify-center items-center mx-1 rounded-full text-white bg-green-600 shadow-sm dark:shadow-gray-700">1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">4</a>
+                            </li>
+                            <li>
+                                <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
+                                    <i class="uil uil-angle-right text-[20px]"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div><!--end grid-->
+
         </div>
     </section><!--end section-->
 </x-layouts.main>

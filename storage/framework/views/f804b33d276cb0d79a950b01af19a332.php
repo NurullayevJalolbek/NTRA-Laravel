@@ -20,7 +20,7 @@
     <img src="your-image-url.jpg" alt="Background Image" class="absolute inset-0 w-full h-full object-cover">
 
 
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css']); ?>
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 
     <style>
         .filter-search-form select.form-select {

@@ -6,6 +6,7 @@ namespace App\Actions;
 
 use App\Models\Ad;
 use App\Models\Bookmarked;
+use Storage;
 
 class DisplayAdImage
 {
@@ -18,12 +19,13 @@ class DisplayAdImage
 
         $image = $ad->images->first()?->name;
 
-        if ($image) {
-            return "/app/public/$image";
+        if ($image && Storage::disk('public')->exists($image)) {
+            return "/storage/$image";
         }
 
         return "/assets/images/ads/GZdB6jMF5x2vzevJXSLs7bvQ80uiiPeaOzgPJfyD.jpg";
     }
+
 
 
 }
