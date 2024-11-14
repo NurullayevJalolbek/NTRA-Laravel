@@ -67,6 +67,8 @@ services:
       - app-network  # Corrected network to use app-network
     command: bash -c "npm install && npm run build && npm run dev"
 
+
+
 networks:
   app-network:
     driver: bridge

@@ -8,8 +8,9 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+
     
-    <div class="page-wrapper toggled">
+    <div  id ="profile" class="page-wrapper toggled">
         <!-- Start Page Content -->
         <main class="page-content bg-gray-50 dark:bg-slate-800">
             <div class="container-fluid relative px-3">

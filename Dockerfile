@@ -1,3 +1,4 @@
+
 FROM php:8.3-fpm
 
 WORKDIR /var/www
@@ -22,6 +23,7 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
 
 COPY . /var/www
+
 
 RUN composer install
 
