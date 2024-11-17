@@ -54,139 +54,37 @@
                             </div>
                         </div>
 
-                        <div class="xl:col-span-9 lg:col-span-8 md:col-span-8">
-                            <div class="grid grid-cols-1 gap-6">
-                                <div
-                                    class="p-6 relative rounded-md shadow dark:shadow-gray-700 bg-white dark:bg-slate-900">
-                                    <h5 class="text-lg font-semibold mb-4">Personal Detail :</h5>
-                                    <form id="send-verification" method="POST" action="<?php echo e(route('profile.updates')); ?>">
-                                        <?php echo csrf_field(); ?>
-                                        <?php echo method_field('PATCH'); ?> <!-- Bu yerda PATCH metodini belgilaymiz -->
-                                        <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
-                                            <div>
-                                                <label class="form-label font-medium">First Name: <span class="text-red-600">*</span></label>
-                                                <div class="form-icon relative mt-2">
-                                                    <i data-feather="user" class="size-4 absolute top-3 start-4"></i>
-                                                    <input type="text"
-                                                           class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                                           placeholder="First Name" id="first_name" name="first_name" value="<?php echo e($user->first_name); ?>" required>
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <label class="form-label font-medium">Last Name: <span class="text-red-600">*</span></label>
-                                                <div class="form-icon relative mt-2">
-                                                    <i data-feather="user-check" class="size-4 absolute top-3 start-4"></i>
-                                                    <input type="text"
-                                                           class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                                           placeholder="Last Name" id="last_name" value="<?php echo e($user->last_name); ?>" name="last_name" required>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label class="form-label font-medium">Your Email: <span class="text-red-600">*</span></label>
-                                                <div class="form-icon relative mt-2">
-                                                    <i data-feather="mail" class="size-4 absolute top-3 start-4"></i>
-                                                    <input type="email"
-                                                           class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                                           placeholder="Email" id="email"  value="<?php echo e($user->email); ?>" name="email" required>
-                                                </div>
-                                            </div>
-                                        </div><!--end grid-->
-
-                                        <button type="submit" id="submit" name="send"
-                                                class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-5">
-                                            Save Changes
-                                        </button>
-                                    </form><!--end form-->
-                                </div>
-
-                                <div
-                                    class="p-6 relative rounded-md shadow dark:shadow-gray-700 bg-white dark:bg-slate-900">
-                                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-                                        <div>
-                                            <h5 class="text-lg font-semibold mb-4">Contact Info :</h5>
-
-                                            <form id="send-verification" method="POST" action="<?php echo e(route('profile.updates')); ?>">
-                                                <?php echo csrf_field(); ?>
-                                                <?php echo method_field('PATCH'); ?> <!-- Bu yerda PATCH metodini belgilaymiz -->
-                                                <div class="grid grid-cols-1 gap-5">
-                                                    <div>
-                                                        <label class="form-label font-medium">Phone No. :</label>
-                                                        <div class="flex items-center mt-2">
-                                                            <input name="phone_prefix" id="phone_prefix" type="text"
-                                                                   value="+998"
-                                                                   readonly
-                                                                   class="form-input w-20 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-l-md border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0 text-center"/>
-                                                            <input name="number" id="number" type="text"
-                                                                   class="form-input ps-3 w-full py-2 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-r-md border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                                                   placeholder="Phone :" value="<?php echo e($user->phone); ?>">
-                                                        </div>
-                                                    </div>
-                                                </div><!--end grid-->
-
-
-                                                <button type="submit"
-                                                        class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-5">
-                                                    Add
-                                                </button>
-                                            </form><!--end form-->
-                                        </div><!--end col-->
-
-                                        <div>
-                                            <h5 class="text-lg font-semibold mb-4">Change password :</h5>
-                                            <form id="send-verification" method="POST" action="<?php echo e(route('profile.updates')); ?>">
-                                                <?php echo csrf_field(); ?>
-                                                <?php echo method_field('PATCH'); ?> <!-- Bu yerda PATCH metodini belgilaymiz -->
-                                                <div class="grid grid-cols-1 gap-5">
-                                                    <div>
-                                                        <label class="form-label font-medium">Old password :</label>
-                                                        <div class="form-icon relative mt-2">
-                                                            <i data-feather="key" class="size-4 absolute top-3 start-4"></i>
-                                                            <input type="password"
-                                                                   name="old_password"
-                                                                   class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                                                   placeholder="Old password" required="">
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div>
-                                                        <label class="form-label font-medium">New password :</label>
-                                                        <div class="form-icon relative mt-2">
-                                                            <i data-feather="key" class="size-4 absolute top-3 start-4"></i>
-                                                            <input type="password"
-                                                                   name="new_password"
-                                                                   class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                                                   placeholder="New password" required="">
-                                                        </div>
-                                                    </div>
-                                                </div><!--end grid-->
-
-                                                <button type="submit"
-                                                        class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-5">
-                                                    Save password
-                                                </button>
-                                            </form><!--end form-->
-                                        </div><!--end col-->
-                                    </div><!--end row-->
-                                </div>
-
-                                <div class="p-6 relative rounded-md shadow dark:shadow-gray-700 bg-white dark:bg-slate-900">
-                                    <h5 class="text-lg font-semibold mb-4 text-red-600">Hisobni o'chirish :</h5>
-
-                                    <p class="text-slate-400 mb-4">Siz hisobni o'chirishni xohlaysizmi? "O'chirish" tugmasini bosing.</p>
-
-                                    <form action="<?php echo e(route('user.profile.delete')); ?>" method="POST" onsubmit="return confirm('Hisobingizni o\'chirishni xohlayotganingizga ishonchingiz komilmi? Bu amal qaytarilmaydi.');">
-                                        <?php echo csrf_field(); ?>
-                                        <?php echo method_field('DELETE'); ?>
-                                        <button type="submit" class="btn bg-red-600 hover:bg-red-700 border-red-600 hover:border-red-700 text-white rounded-md">O'chirish</button>
-                                    </form>
-                                </div>
+                        <div id="vue-chat" class="xl:col-span-9 lg:col-span-8 md:col-span-8">
 
 
 
-                            </div>
+
+
+
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+
+
+
+
                         </div>
+
+
+
+
+
+
                     </div>
                     <!-- End Content -->
                 </div>

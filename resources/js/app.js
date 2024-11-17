@@ -4,8 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import { createApp } from 'vue';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -13,18 +11,21 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
+import './bootstrap';
+import { createApp } from 'vue';
+
+import Profile from './components/Profile-Setting.vue'; // Profile komponentini import qilish
+
 const app = createApp(Profile);
 
-import ExampleComponent from './components/Profile.vue';
-import Profile from "./components/Profile.vue";
-app.component('example-component', ExampleComponent);
+app.mount('#vue-chat');
 
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/Profile.vue -> <example-component></example-component>
+ * Eg. ./components/Profile-Setting.vue -> <example-component></example-component>
  */
 
 // Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
@@ -37,4 +38,3 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#profile');

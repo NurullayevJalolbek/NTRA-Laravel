@@ -92,7 +92,6 @@
                                             <div class="lg:mt-6">
                                                 <input type="submit" id="search-buy" name="search"
                                                        class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full h-12 rounded" <!-- Removed "!h-12" -->
-                                                value="Search">
                                             </div>
                                         </div><!--end grid-->
                                     </div><!--end container-->

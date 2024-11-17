@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Ad;
 use App\Models\User;
 use Hash;
+use http\Env\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 
@@ -47,11 +49,11 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request): \Illuminate\Http\JsonResponse
     {
+//        dump($request->all());
         $validatedData = [];
 
-        // Foydalanuvchi shaxsiy ma'lumotlarini yangilash
         if ($request->has('first_name')) {
             $request->validate([
                 'first_name' => ['required', 'string', 'max:255'],
@@ -66,17 +68,40 @@ class ProfileController extends Controller
             $validatedData['last_name'] = $request->last_name;
         }
 
+
         if ($request->has('email')) {
-            $request->validate([
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class . ',email,' . Auth::id()],
+            // Emailni tekshirish
+            $validatedData = $request->validate([
+                'email' => [
+                    'required',
+                    'string',
+                    'lowercase',
+                    'email',
+                    'max:255',
+                ],
             ]);
+
+            // Emailni tekshirib, agar mavjud bo'lsa, xato qaytarish
+            if (User::where('email', $request->email)->exists()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Bu email manzili allaqachon ro\'yxatdan o\'tgan.'
+                ]); // Xato kodi
+
+            }
+
+            // Emailni yangilash
             $validatedData['email'] = $request->email;
         }
 
-        // Agar validatsiya o‘tganda, shaxsiy ma'lumotlarni yangilash
+// Shaxsiy ma'lumotlarni yangilash
         if (!empty($validatedData)) {
             Auth::user()->update($validatedData);
         }
+
+
+
+
 
         // Telefon raqamini yangilash
         if ($request->has('number')) {
@@ -100,8 +125,7 @@ class ProfileController extends Controller
                 'password' => Hash::make($validatedData['new_password']),
             ]);
 
-            return redirect()->route('user.setting')->with('success', 'Password updated successfully.');
-
+            return response()->json(['status' => 'success', 'message' => 'Profile updated successfully.']);
 
         }
 
@@ -110,7 +134,7 @@ class ProfileController extends Controller
             Auth::user()->update($validatedData);
         }
 
-        return redirect()->route('user.setting');
+        return response()->json(['status' => 'success', 'message' => 'Profile updated successfully.']);
     }
 
 

@@ -135,8 +135,8 @@
 
 
 
-                                <?php if(isset($saqlanmalar)): ?>
-
+                                    <?php if(isset($saqlanmalar)): ?>
+                                        
                                         <div class="grid lg:grid-cols-3 md:grid-cols-2 mt-6 gap-6">
                                             <?php $__currentLoopData = $saqlanmalar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ad): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <div

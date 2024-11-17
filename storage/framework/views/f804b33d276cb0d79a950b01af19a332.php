@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth" dir="ltr">
 <head>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
     <meta charset="UTF-8"/>
     <title>Hously </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -18,6 +20,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://unpkg.com/feather-icons"></link>
     <img src="your-image-url.jpg" alt="Background Image" class="absolute inset-0 w-full h-full object-cover">
+
 
 
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>

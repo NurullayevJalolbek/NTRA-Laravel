@@ -126,8 +126,8 @@
 
 
 
-                                @if (isset($saqlanmalar))
-{{--                                        @dd($saqlanmalar)--}}
+                                    @if (isset($saqlanmalar))
+                                        {{--                                        @dd($saqlanmalar)--}}
                                         <div class="grid lg:grid-cols-3 md:grid-cols-2 mt-6 gap-6">
                                             @foreach ($saqlanmalar as $ad)
                                                 <div
