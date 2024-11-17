@@ -14,11 +14,15 @@
 import './bootstrap';
 import { createApp } from 'vue';
 
-import Profile from './components/Profile-Setting.vue'; // Profile komponentini import qilish
+import Profile from './components/Profile-Setting.vue';
+import IndexFilter from './components/IndexFilter.vue';
 
 const app = createApp(Profile);
+const app2 = createApp(IndexFilter);
+
 
 app.mount('#vue-chat');
+app2.mount('#IndexFilter');
 
 /**
  * The following block of code may be used to automatically register your

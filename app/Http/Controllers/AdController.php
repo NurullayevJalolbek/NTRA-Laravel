@@ -18,11 +18,11 @@ class AdController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function index(): \Illuminate\Http\JsonResponse
     {
         $ads = Ad::all();
         $branches = Branch::all();
-        return view('ads.index', ['ads' => $ads, 'branches' => $branches]);
+        return response()->json([ 'ads' => $ads, 'branches' => $branches]);
     }
 
 
@@ -102,28 +102,27 @@ class AdController extends Controller
 
     public function find(Request $request): \Illuminate\Http\JsonResponse
     {
-
-        return response()->json($request->all());
-//        $searchPhrase = $request->input('search_phrase');
-//        $branchId = $request->input('branches_id');
-//        $minPrice = $request->input('min_price');
-//        $maxPrice = $request->input('max_price');
-//        $ads = Ad::query();
-//        if ($searchPhrase) {
-//            $ads->where('title', 'like', '%' . $searchPhrase . '%');
-//        }
-//        if ($branchId) {
-//            $ads->where('branches_id', $branchId);
-//        }
-//        if ($minPrice) {
-//            $ads->where('price', '>=', $minPrice);
-//        }
-//        if ($maxPrice) {
-//            $ads->where('price', '<=', $maxPrice);
-//        }
-//        $ads = $ads->with('branch')->get();
+//            dump($request->all());
+        $searchPhrase = $request->input('search');
+        $branchId = $request->input('branch');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+        $ads = Ad::query();
+        if ($searchPhrase) {
+            $ads->where('title', 'like', '%' . $searchPhrase . '%');
+        }
+        if ($branchId) {
+            $ads->where('branches_id', $branchId);
+        }
+        if ($minPrice) {
+            $ads->where('price', '>=', $minPrice);
+        }
+        if ($maxPrice) {
+            $ads->where('price', '<=', $maxPrice);
+        }
+        $ads = $ads->with('branch')->get();
 //        $branches = Branch::all();
-//        return view('ads.index', compact('ads', 'branches'));
+        return response()->json(['ads' => $ads]);
     }
 
 

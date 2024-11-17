@@ -12,7 +12,8 @@ Route::get('/logout', function () {
 
 
 
-Route::get('/', [AdController::class, 'index'])->name("home");
+Route::view('/', 'ads.index')->name("home");
+Route::get("index/ads", [\App\Http\Controllers\AdController::class, 'index'])->name("index");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,6 +22,10 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::resource("ads", AdController::class);
+
+    Route::view("/chat", "ads.chat");
+
+
 
     Route::post('/bookmark/save',[Bookmarked::class, 'save']);
 
