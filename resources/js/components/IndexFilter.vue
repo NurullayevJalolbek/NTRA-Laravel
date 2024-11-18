@@ -85,7 +85,7 @@
 <!--                    }-->
 <!--                    @endphp-->
 
-<!--                    <img src="{{ asset((new \App\Actions\DisplayAdImage())($ad)) }}" alt="rasm">-->
+                    <img :src="ImageUrl(ad.image)" alt="rasm">
 
 
 
@@ -135,9 +135,11 @@
                 </div>
                 <div class="p-6">
                     <div class="pb-6">
-                        <h1>{{ad.id}}</h1>
-                        <a href="/ads/{{ad.id}}"
-                           class="text-lg hover:text-green-600 font-medium ease-in-out duration-500"> {{ad.title}}</a>
+                        <a :href="`http://localhost:8080/show/ad/${ad.id}`"
+                           class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">
+                            {{ ad.title }}
+                        </a>
+
                     </div>
 
 
@@ -233,6 +235,7 @@ export default {
                 .then((response) => {
                     Ads.value = response.data.ads;
                     Branches.value = response.data.branches;
+                    console.log(Ads.value)
                 })
                 .catch((error) => {
                     console.error("Xato yuz berdi:", error);
@@ -262,12 +265,20 @@ export default {
                 });
         };
 
+        const imageurl = 'http://localhost:8080/public/assets/images/OqUy2.jpeg'
+
+        const ImageUrl = (image) => {
+            console.log( image);
+        };
+
 
 
 
         onMounted(fetchData);
 
-        return{Ads, Branches, min_price, max_price, branch, search, filterAds
+        console.log(Ads);
+
+        return{Ads, Branches, min_price, max_price, branch, search, filterAds, ImageUrl
         };
     },
 };

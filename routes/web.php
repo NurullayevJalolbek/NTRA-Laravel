@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
     Route::view("/chat", "ads.chat");
 
-
+    Route::get("/show/ad/{id}", [AdController::class, 'show']);
 
     Route::post('/bookmark/save',[Bookmarked::class, 'save']);
 
