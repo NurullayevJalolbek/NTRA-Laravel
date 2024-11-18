@@ -3,6 +3,14 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+    build: {
+        manifest: true, // Ensure the manifest is generated
+    },
+    server: {
+        host: "0.0.0.0",  // Tashqi ulanish uchun barcha IP-larni ruxsatlang
+        port: 5173,       // Portni Docker-compose'da xaritalangan portga moslang
+        strictPort: true, // Portning qat'iy ishlatilishini o'rnating
+    },
     plugins: [
         laravel({
             input: [
