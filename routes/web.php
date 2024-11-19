@@ -11,7 +11,6 @@ Route::get('/logout', function () {
 })->name("logout");
 
 
-
 Route::view('/', 'ads.index')->name("home");
 Route::get("index/ads", [\App\Http\Controllers\AdController::class, 'index'])->name("index");
 
@@ -27,11 +26,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get("/show/ad/{id}", [AdController::class, 'show']);
 
-    Route::post('/bookmark/save',[Bookmarked::class, 'save']);
-
+    Route::get("/bookmark/check", [Bookmarked::class, 'check']);
+    Route::post('/bookmark/save', [Bookmarked::class, 'save']);
     Route::post("/bookmark/delete", [Bookmarked::class, 'delete']);
 
-    Route::get('/search',[\App\Http\Controllers\AdController::class ,'find']);
+
+    Route::get('/search', [\App\Http\Controllers\AdController::class, 'find']);
 
     Route::get('/user/profile', [\App\Http\Controllers\ProfileController::class, 'profile'])->name("user.profile");
 
@@ -51,12 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::post("/lock-screen", [\App\Http\Controllers\ProfileController::class, 'lockScreen'])->name("lock-screen");
 
 
-
-
-
     Route::get('/dashboard/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/dashboard/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/dashboard/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

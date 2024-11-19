@@ -11,7 +11,8 @@
                                 <div class="registration-form text-dark text-start">
                                     <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
                                         <div>
-                                            <label class="form-label font-medium text-slate-900 dark:text-white">Search : <span class="text-red-600">*</span></label>
+                                            <label class="form-label font-medium text-slate-900 dark:text-white">Search
+                                                : <span class="text-red-600">*</span></label>
                                             <div class="filter-search-form relative filter-border mt-2">
                                                 <i class="uil uil-search icons"></i>
                                                 <input v-model="search" type="text" id="job-keyword"
@@ -21,18 +22,28 @@
                                         </div>
 
                                         <div>
-                                            <label for="buy-properties" class="form-label font-medium text-slate-900 dark:text-white">Filial :</label>
+                                            <label for="buy-properties"
+                                                   class="form-label font-medium text-slate-900 dark:text-white">Filial
+                                                :</label>
                                             <div class="filter-search-form relative filter-border mt-2">
                                                 <i class="uil uil-estate icons"></i>
-                                                <select class="form-select z-2 bg-gray-50 dark:bg-slate-800 border-0 h-12" v-model="branch" data-trigger  id="branches"   aria-label="Default select example">
+                                                <select
+                                                    class="form-select z-2 bg-gray-50 dark:bg-slate-800 border-0 h-12"
+                                                    v-model="branch" data-trigger id="branches"
+                                                    aria-label="Default select example">
                                                     <option value="">Filial</option>
-                                                    <option  v-for="BRANCH in Branches" :value="BRANCH.id" >{{ BRANCH.name }}</option>
+                                                    <option v-for="BRANCH in Branches" :value="BRANCH.id">{{
+                                                            BRANCH.name
+                                                        }}
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label for="buy-min-price" class="form-label font-medium text-slate-900 dark:text-white">Min Price :</label>
+                                            <label for="buy-min-price"
+                                                   class="form-label font-medium text-slate-900 dark:text-white">Min
+                                                Price :</label>
                                             <div class="filter-search-form relative filter-border mt-2">
                                                 <i class="uil uil-usd-circle icons"></i>
                                                 <input v-model="min_price" type="text" id="buy-min-price"
@@ -42,7 +53,9 @@
                                         </div>
 
                                         <div>
-                                            <label for="buy-max-price" class="form-label font-medium text-slate-900 dark:text-white">Max Price :</label>
+                                            <label for="buy-max-price"
+                                                   class="form-label font-medium text-slate-900 dark:text-white">Max
+                                                Price :</label>
                                             <div class="filter-search-form relative filter-border mt-2">
                                                 <i class="uil uil-usd-circle icons"></i>
                                                 <input type="text" v-model="max_price" id="buy-max-price"
@@ -53,7 +66,7 @@
 
                                         <div class="lg:mt-6">
                                             <input type="submit" id="search-buy" name="search"
-                                                   class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full h-12 rounded" >
+                                                   class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full h-12 rounded">
                                         </div>
                                     </div><!--end grid-->
                                 </div><!--end container-->
@@ -70,66 +83,62 @@
         <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]"
              id="ads-grid">
 
-
-
             <div v-for="ad in Ads"
-                class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
+                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                 <div class="relative">
-<!--                    @php-->
-<!--                    //                            dump(Auth::user()->id);-->
-<!--                    try {-->
-<!--                    $bookmarkedModel = new \App\Models\Bookmarked();-->
-<!--                    $bookmarked = $bookmarkedModel->findByAdAndUser($ad->id, Auth::user()->id);-->
-<!--                    } catch (\Exception $e) {-->
-<!--                    $bookmarked = null;-->
-<!--                    }-->
-<!--                    @endphp-->
+                    <!--                    @php-->
+                    <!--                    //                            dump(Auth::user()->id);-->
+                    <!--                    try {-->
+                    <!--                    $bookmarkedModel = new \App\Models\Bookmarked();-->
+                    <!--                    $bookmarked = $bookmarkedModel->findByAdAndUser($ad->id, Auth::user()->id);-->
+                    <!--                    } catch (\Exception $e) {-->
+                    <!--                    $bookmarked = null;-->
+                    <!--                    }-->
+                    <!--                    @endphp-->
 
-                    <img :src="ImageUrl(ad.image)" alt="rasm">
-
-
+                    <!--                    <img :src="ImageUrl(ad.image)" alt="rasm">-->
 
 
-<!--                    @if (Auth::check())-->
-<!--                    @if (!isset($bookmarked))-->
-<!--                    <div class="absolute top-4 end-4">-->
-<!--                        <form action="/bookmark/save" method="POST" class="inline-block">-->
-<!--                            @csrf-->
-<!--                            <input type="hidden" name="ad_id" value="{{ $ad->id }}">-->
-<!--                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">-->
-<!--                            <button style="background: none; border: none; cursor: pointer;">-->
-<!--                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"-->
-<!--                                     stroke-width="1.5" stroke="currentColor" class="size-6">-->
-<!--                                    <path stroke-linecap="round" stroke-linejoin="round"-->
-<!--                                          d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5"/>-->
-<!--                                </svg>-->
-<!--                            </button>-->
-
-<!--                        </form>-->
-<!--                    </div>-->
-
-<!--                    @else-->
-<!--                    <div class="absolute top-4 end-4">-->
-<!--                        <form action="/bookmark/delete" method="POST" class="inline-block">-->
-<!--                            @csrf-->
-<!--                            <input type="hidden" name="ad_id" value="{{ $ad->id }}">-->
-<!--                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">-->
-
-<!--                            <button style="background: none; border: none; cursor: pointer;">-->
-<!--                                <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24"-->
-<!--                                     stroke-width="1.5" stroke="red" class="size-6">-->
-<!--                                    <path stroke-linecap="round" stroke-linejoin="round"-->
-<!--                                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/>-->
-<!--                                </svg>-->
-<!--                            </button>-->
+                    <!--                    @if (Auth::check())-->
+                    <!--                    @if (!isset($bookmarked))-->
+                    <div v-if="user && !userSaved?.some(savedAd => savedAd.ad_id === ad.id)" class="absolute top-4 end-4">
+                        <form @submit.prevent="BookmarkSave" class="inline-block">
+                            <input type="hidden" :data-ad-id="ad.id" :data-name="ad_id">
+                            <input type="hidden" :data-user-id="user.id" :data-name="user_id">
+                            <button style="background: none; border: none; cursor: pointer;"
+                                    @click.prevent="BookmarkSave">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
 
 
-<!--                        </form>-->
-<!--                    </div>-->
 
-<!--                    @endif-->
+                    <div v-if="user && userSaved?.some(savedAd => savedAd.ad_id === ad.id)" class="absolute top-4 end-4">
+                        <form @submit.prevent="BookmarkDelete" class="inline-block">
+                            <input type="hidden" :data-ad-id="ad.id" :data-name="ad_id">
+                            <input type="hidden" :data-user-id="user.id" :data-name="user_id">
+                            <button style="background: none; border: none; cursor: pointer;"
+                                    @click.prevent="BookmarkDelete">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="red" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
 
-<!--                    @endif-->
+
+
+
+                    <!--                    @endif-->
+
+                    <!--                    @endif-->
 
 
                 </div>
@@ -159,7 +168,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                       d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/>
                             </svg>
-                            <span> {{ad.gender}}</span>
+                            <span> {{ ad.gender }}</span>
                         </li>
 
 
@@ -177,7 +186,7 @@
                         <li class="flex items-center lg:me-6 me-8">
                             <i class="uil uil-usd-circle text-green-600 text-2xl mr-2"></i>
                             <span class="text-slate-400 mr-2">Price:</span>
-                            <p class="text-lg font-medium">{{ad.price}}</p>
+                            <p class="text-lg font-medium">{{ ad.price }}</p>
                         </li>
 
 
@@ -192,24 +201,30 @@
                 <nav>
                     <ul class="inline-flex items-center -space-x-px">
                         <li>
-                            <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
+                            <a href="#"
+                               class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
                                 <i class="uil uil-angle-left text-[20px]"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" aria-current="page" class="z-10 size-10 inline-flex justify-center items-center mx-1 rounded-full text-white bg-green-600 shadow-sm dark:shadow-gray-700">1</a>
+                            <a href="#" aria-current="page"
+                               class="z-10 size-10 inline-flex justify-center items-center mx-1 rounded-full text-white bg-green-600 shadow-sm dark:shadow-gray-700">1</a>
                         </li>
                         <li>
-                            <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">2</a>
+                            <a href="#"
+                               class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">2</a>
                         </li>
                         <li>
-                            <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">3</a>
+                            <a href="#"
+                               class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">3</a>
                         </li>
                         <li>
-                            <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">4</a>
+                            <a href="#"
+                               class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">4</a>
                         </li>
                         <li>
-                            <a href="#" class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
+                            <a href="#"
+                               class="size-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
                                 <i class="uil uil-angle-right text-[20px]"></i>
                             </a>
                         </li>
@@ -221,7 +236,7 @@
     </div>
 </template>
 <script>
-import { ref, onMounted } from "vue";
+import {ref, onMounted} from "vue";
 import axios from "axios";
 
 export default {
@@ -229,18 +244,23 @@ export default {
     setup() {
         const Ads = ref([]);
         const Branches = ref([]);
+        const user = ref();
+
 
         const fetchData = async () => {
             axios.get("http://localhost:8080/index/ads")
                 .then((response) => {
                     Ads.value = response.data.ads;
                     Branches.value = response.data.branches;
-                    console.log(Ads.value)
+                    user.value = response.data.user;
                 })
                 .catch((error) => {
                     console.error("Xato yuz berdi:", error);
                 });
         };
+
+        onMounted(fetchData);
+
 
         const min_price = ref();
         const max_price = ref();
@@ -265,20 +285,93 @@ export default {
                 });
         };
 
-        const imageurl = 'http://localhost:8080/public/assets/images/OqUy2.jpeg'
+        // const imageurl = 'http://localhost:8080/public/assets/images/OqUy2.jpeg'
 
-        const ImageUrl = (image) => {
-            console.log( image);
+        const ad_id = ref();
+        const user_id = ref();
+
+        const BookmarkSave = (event) => {
+            const form = event.target.closest('form');
+            const adId = form.querySelector('input[data-ad-id]').getAttribute('data-ad-id');
+            const userId = form.querySelector('input[data-user-id]').getAttribute('data-user-id');
+
+            ad_id.value = adId;
+            user_id.value = userId;
+
+            if (!adId || !userId) {
+                console.error("Ma'lumotlar yetarli emas.");
+                return;
+            }
+
+            axios.post("http://localhost:8080/bookmark/save", {
+                ad_id: ad_id.value,
+                user_id: user_id.value,
+            }).then(response => {
+                if (response.data.success) {
+                    ad_id.value = '';
+                    user_id.value = '';
+                }
+            }).catch(error => {
+                console.error("Xato yuz berdi:", error);
+            })
+            Bookmarkcheck();
+
+
+
         };
 
+        const BookmarkDelete = (event) => {
+            const form = event.target.closest('form');
+            const adId = form.querySelector('input[data-ad-id]').getAttribute('data-ad-id');
+            const userId = form.querySelector('input[data-user-id]').getAttribute('data-user-id');
+
+            ad_id.value = adId;
+            user_id.value = userId;
+
+            axios.post("http://localhost:8080/bookmark/delete", {
+                ad_id: ad_id.value,
+                user_id: user_id.value
+            }).then(response => {
+                if (response.data.success) {
+                    ad_id.value = '';
+                    user_id.value = '';
+                }
+            }).catch(error => {
+                console.error("Xato yuz berdi:", error);
+            })
+            Bookmarkcheck();
+
+        }
+
+        const userSaved = ref( );
+        const Bookmarkcheck = async () => {
+            axios.get(`http://localhost:8080/bookmark/check`)
+                .then(response => {
+                    userSaved.value = response.data.bookmarks;
+                })
+                .catch(error => {
+                    console.error("Xato yuz berdi:", error);
+                });
+
+        }
+        onMounted(Bookmarkcheck);
+        setInterval(Bookmarkcheck, 2000);
 
 
-
-        onMounted(fetchData);
-
-        console.log(Ads);
-
-        return{Ads, Branches, min_price, max_price, branch, search, filterAds, ImageUrl
+        return {
+            Ads,
+            Branches,
+            min_price,
+            max_price,
+            branch,
+            search,
+            filterAds,
+            user,
+            ad_id,
+            user_id,
+            BookmarkSave,
+            BookmarkDelete,
+            userSaved
         };
     },
 };

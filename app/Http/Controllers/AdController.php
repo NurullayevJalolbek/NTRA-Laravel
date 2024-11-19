@@ -22,7 +22,8 @@ class AdController extends Controller
     {
         $ads = Ad::all();
         $branches = Branch::all();
-        return response()->json([ 'ads' => $ads, 'branches' => $branches]);
+        $user = Auth::user();
+        return response()->json([ 'ads' => $ads, 'branches' => $branches, 'user' => $user]);
     }
 
 
