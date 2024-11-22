@@ -70,7 +70,6 @@ class ProfileController extends Controller
 
 
         if ($request->has('email')) {
-            // Emailni tekshirish
             $validatedData = $request->validate([
                 'email' => [
                     'required',
@@ -81,20 +80,17 @@ class ProfileController extends Controller
                 ],
             ]);
 
-            // Emailni tekshirib, agar mavjud bo'lsa, xato qaytarish
             if (User::where('email', $request->email)->exists()) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Bu email manzili allaqachon ro\'yxatdan o\'tgan.'
-                ]); // Xato kodi
+                ]);
 
             }
 
-            // Emailni yangilash
             $validatedData['email'] = $request->email;
         }
 
-// Shaxsiy ma'lumotlarni yangilash
         if (!empty($validatedData)) {
             Auth::user()->update($validatedData);
         }
@@ -103,7 +99,6 @@ class ProfileController extends Controller
 
 
 
-        // Telefon raqamini yangilash
         if ($request->has('number')) {
             $request->validate([
                 'number' => ['required', 'digits:9'],
@@ -114,7 +109,6 @@ class ProfileController extends Controller
             Auth::user()->update($validatedData);
         }
 
-        // Parolni yangilash
         if ($request->has('old_password') && $request->has('new_password')) {
             $validatedData = $request->validate([
                 'old_password' => 'required|current_password',

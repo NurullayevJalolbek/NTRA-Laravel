@@ -38,12 +38,14 @@ class AdController extends Controller
     }
 
 
-    public function my(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function myAds(): \Illuminate\Http\JsonResponse
     {
-        $user = Auth::user();
-        $ads = Ad::query()->where('user_id', Auth::user()->id)->get();
-        return view('ads.profile', ['ads' => $ads, 'user' => $user]);
+        $ads = Auth::user()->ads()->with('user')->get();
 
+        return response()->json([
+            'success' => true,
+            'ads' => $ads,
+        ]);
     }
 
     /**
@@ -116,7 +118,7 @@ class AdController extends Controller
             $ads->where('title', 'like', '%' . $searchPhrase . '%');
         }
         if ($branchId) {
-            $ads->where('branches_id', $branchId);
+            $ads->where('branch_id', $branchId);
         }
         if ($minPrice) {
             $ads->where('price', '>=', $minPrice);

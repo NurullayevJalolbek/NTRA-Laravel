@@ -11,31 +11,31 @@
             <form id="send-verification" @submit.prevent="InputData">
                 <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
                     <div>
-                        <label class="form-label font-medium">First Name: <span class="text-red-600">*</span></label>
+                        <label class="form-label font-medium">First Name:</label>
                         <div class="form-icon relative mt-2">
                             <i data-feather="user" class="size-4 absolute top-3 start-4"></i>
                             <input type="text" v-model="first_name"
                                    class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                   placeholder="First Name" id="first_name" name="first_name" required>
+                                   placeholder="First Name" id="first_name" name="first_name">
                         </div>
                     </div>
 
                     <div>
-                        <label class="form-label font-medium">Last Name: <span class="text-red-600">*</span></label>
+                        <label class="form-label font-medium">Last Name:</label>
                         <div class="form-icon relative mt-2">
                             <i data-feather="user-check" class="size-4 absolute top-3 start-4"></i>
                             <input type="text" v-model="last_name"
                                    class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                   placeholder="Last Name" id="last_name" name="last_name" required>
+                                   placeholder="Last Name" id="last_name" name="last_name">
                         </div>
                     </div>
                     <div>
-                        <label class="form-label font-medium">Your Email: <span class="text-red-600">*</span></label>
+                        <label class="form-label font-medium">Your Email:</label>
                         <div class="form-icon relative mt-2">
                             <i data-feather="mail" class="size-4 absolute top-3 start-4"></i>
                             <input type="email" v-model="email"
                                    class="form-input ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-green-600 dark:border-gray-800 dark:focus:border-green-600 focus:ring-0"
-                                   placeholder="Email" id="email" name="email" required>
+                                   placeholder="Email" id="email" name="email">
                         </div>
                     </div>
 

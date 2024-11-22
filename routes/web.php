@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/user/saved/ads', [\App\Http\Controllers\AdController::class, 'saved'])->name("user.saved");
 
-    Route::get("/user/my/ads", [\App\Http\Controllers\AdController::class, 'my'])->name("user.my");
+    Route::get("/user/created/ads", [\App\Http\Controllers\AdController::class, 'myAds'])->name("user.my");
 
     Route::get('/user/profile/setting', [\App\Http\Controllers\ProfileController::class, 'edit'])->name("user.setting");
 
