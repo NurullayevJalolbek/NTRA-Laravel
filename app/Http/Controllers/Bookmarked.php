@@ -41,7 +41,7 @@ class Bookmarked extends Controller
     public  function  delete(Request $request)
     {
         $ad_id = $request->input("ad_id");
-        $user_id = $request->input("user_id");
+        $user_id = \Auth::id();
         $delete = \App\Models\Bookmarked::where('ad_id', $ad_id)
             ->where('user_id', $user_id)
             ->delete();

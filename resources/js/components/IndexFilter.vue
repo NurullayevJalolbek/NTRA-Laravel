@@ -355,7 +355,7 @@ export default {
 
         }
         onMounted(Bookmarkcheck);
-        setInterval(Bookmarkcheck, 2000);
+        setInterval(Bookmarkcheck, 500);
 
 
         return {

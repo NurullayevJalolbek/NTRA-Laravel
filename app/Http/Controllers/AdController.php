@@ -27,13 +27,16 @@ class AdController extends Controller
     }
 
 
-    public  function  saved(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function saved(): \Illuminate\Http\JsonResponse
     {
-        $user = Auth::user();
-        $saqlanmalar = \App\Models\Bookmarked::query()->where('user_id', Auth::user()->id)->get();
-        return view('ads.profile', ['user' => $user,'saqlanmalar' => $saqlanmalar]);
+        $ads = \App\Models\Bookmarked::where('user_id', Auth::id())
+            ->with('ads') // Munosabat orqali Ad ma'lumotlarini yuklash
+            ->get()
+            ->pluck('ads'); // Faqat ads ma'lumotlarini olish
 
+        return response()->json(['ads' => $ads]);
     }
+
 
     public function my(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
