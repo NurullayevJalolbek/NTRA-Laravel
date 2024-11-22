@@ -235,8 +235,9 @@ export default {
             }).catch(error => {
                 console.error("Xato yuz berdi:", error);
             })
+            UserSaved();
         }
-        setInterval( UserSaved, 1000);
+        // setInterval( UserSaved, 1000);
 
 
 
