@@ -200,8 +200,13 @@ export default {
         const SavedAds = ref([]);
         const CreatedAds = ref();
 
+
+        const USERSAVEDADS = axios.create({
+            baseURL: window.env?.APP_URL || 'http://localhost:8080',
+        });
+
         const UserSaved = () => {
-            axios.get("http://localhost:8080/user/saved/ads")
+            USERSAVEDADS.get("/user/saved/ads")
                 .then((response) => {
                     SavedAds.value = response.data.ads;
                 })
@@ -217,7 +222,11 @@ export default {
             const form = event.target.closest('form');
             ad_id.value = form.querySelector('input[data-ad-id]').getAttribute('data-ad-id');
 
-            axios.post("http://localhost:8080/bookmark/delete", {
+
+            const BOOKMARKDELETE = axios.create({
+                baseURL: window.env?.APP_URL || 'http://localhost:8080',
+            });
+            BOOKMARKDELETE.post("/bookmark/delete", {
                 ad_id: ad_id.value,
             }).then(response => {
                 if (response.data.success) {
@@ -236,8 +245,12 @@ export default {
 
 
         const UserCreatedAds = () => {
+            const USERCREATEDAD = axios.create({
+                baseURL: window.env?.APP_URL || 'http://localhost:8080',
+            });
+
             SavedAds.value = [];
-            axios.get("http://localhost:8080/user/created/ads")
+            USERCREATEDAD.get("/user/created/ads")
                 .then((response) => {
                     CreatedAds.value = response.data.ads;
                 })

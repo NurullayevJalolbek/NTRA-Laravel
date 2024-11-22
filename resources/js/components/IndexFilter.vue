@@ -250,7 +250,13 @@ export default {
 
 
         const fetchData = async () => {
-            axios.get("http://localhost:8080/index/ads")
+
+            const index = axios.create({
+                baseURL: window.env?.APP_URL || 'http://localhost:8080',
+            });
+
+
+            index.get("/index/ads")
                 .then((response) => {
                     Ads.value = response.data.ads;
                     Branches.value = response.data.branches;
@@ -270,8 +276,12 @@ export default {
         const search = ref();
 
 
+        const searchADS = axios.create({
+            baseURL: window.env?.APP_URL || 'http://localhost:8080',
+        });
+
         const filterAds = async () => {
-            axios.get("http://localhost:8080/search", {
+            searchADS.get("/search", {
                 params: {
                     min_price: min_price.value,
                     max_price: max_price.value,
@@ -305,7 +315,12 @@ export default {
                 return;
             }
 
-            axios.post("http://localhost:8080/bookmark/save", {
+
+            const BookmarkSave = axios.create({
+                baseURL: window.env?.APP_URL || 'http://localhost:8080',
+            });
+
+            BookmarkSave.post("/bookmark/save", {
                 ad_id: ad_id.value,
                 user_id: user_id.value,
             }).then(response => {
@@ -330,7 +345,11 @@ export default {
             ad_id.value = adId;
             user_id.value = userId;
 
-            axios.post("http://localhost:8080/bookmark/delete", {
+
+            const BookmarkDelete = axios.create({
+                baseURL: window.env?.APP_URL || 'http://localhost:8080',
+            });
+            BookmarkDelete.post("/bookmark/delete", {
                 ad_id: ad_id.value,
                 user_id: user_id.value
             }).then(response => {
@@ -345,9 +364,13 @@ export default {
 
         }
 
+        const BookmarkChECK = axios.create({
+            baseURL: window.env?.APP_URL || 'http://localhost:8080',
+        });
+
         const userSaved = ref( );
         const Bookmarkcheck = async () => {
-            axios.get(`http://localhost:8080/bookmark/check`)
+            BookmarkChECK.get(`/bookmark/check`)
                 .then(response => {
                     userSaved.value = response.data.bookmarks;
                 })

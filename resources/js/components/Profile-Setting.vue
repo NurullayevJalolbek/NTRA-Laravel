@@ -108,6 +108,7 @@
 
 <script>
 import {ref, watch} from "vue";
+import axios from "axios";
 
 export default {
     setup() {
@@ -125,7 +126,11 @@ export default {
         const phone_number = ref();
         const InputData = async () => {
             try {
-                const response = await axios.patch(
+                const PROFILEUPDATE = axios.create({
+                    baseURL: window.env?.APP_URL || 'http://localhost:8080',
+                });
+
+                const response = await PROFILEUPDATE.patch(
                     "http://localhost:8080/profile/update",
                     {
                         last_name: last_name.value,
