@@ -59,10 +59,10 @@ services:
     volumes:
       - ./:/var/www
     tty: true
-    ports:
-      - "5173:5173"
     environment:
       - NODE_ENV=development
+    ports:
+      - '5173:5173'
     command: >
       sh -c "npm install && npm run dev"
     networks:

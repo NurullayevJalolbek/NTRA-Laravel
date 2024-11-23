@@ -380,7 +380,7 @@ export default {
 
         }
         onMounted(Bookmarkcheck);
-        setInterval(Bookmarkcheck, 500);
+        // setInterval(Bookmarkcheck, 500);
 
 
         return {
