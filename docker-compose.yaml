@@ -43,7 +43,7 @@ services:
     container_name: rent_web
     image: nginx:alpine
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - .:/var/www
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
