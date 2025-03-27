@@ -1,0 +1,2 @@
+<div <?php echo e($attributes->class(['form-error basis-full'])); ?>><?php echo e($slot); ?></div>
+<?php /**PATH /var/www/vendor/moonshine/moonshine/resources/views/components/form/input-error.blade.php ENDPATH**/ ?>

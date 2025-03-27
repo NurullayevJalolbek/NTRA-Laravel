@@ -11,7 +11,7 @@ Route::get('/logout', function () {
 })->name("logout");
 
 
-Route::view('/', 'ads.index')->name("home");
+Route::get("/", [\App\Http\Controllers\AdController::class, 'INDEXX'])->name("home");
 Route::get("index/ads", [\App\Http\Controllers\AdController::class, 'index'])->name("index");
 
 Route::get('/dashboard', function () {

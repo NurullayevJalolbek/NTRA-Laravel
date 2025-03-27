@@ -25,6 +25,10 @@ class AdController extends Controller
         $user = Auth::user();
         return response()->json([ 'ads' => $ads, 'branches' => $branches, 'user' => $user]);
     }
+    public  function  INDEXX(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    {
+        return view('ads.index');
+    }
 
 
     public function saved(): \Illuminate\Http\JsonResponse
